@@ -26,6 +26,10 @@ const Drug = db.define(
         fotoObat : {
             type : Sequelize.STRING,
             defaultValue : 'noPhoto.jpg'
+        },
+        descObat : {
+            type : Sequelize.TEXT,
+            allowNull : false
         }
     }
 )
