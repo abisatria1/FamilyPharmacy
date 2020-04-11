@@ -12,8 +12,10 @@ passport.use(new jwtStrategy({
     secretOrKey : process.env.API_KEY
 } , async(payload,done) => {
     try {
-        console.log('asdsaaaaaaa')
-        if (payload.exp <= Date.now()/1000) return done(customError('Token has expired',401))
+        const now = Date.now()
+        const exp = payload.exp * 1000
+        console.log(`Now ${now} and exp ${exp}`)
+        if (Date.now() >= payload.exp * 1000) return done(customError('Token has expired',401))
         const user = await User.findByPk(payload.sub)
         if (!user) return done(customError('User not found' ,404))
         done(null,user)
