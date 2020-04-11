@@ -8,7 +8,7 @@ const signToken = user => {
     return  token = jwt.sign({
         iss : 'abisatria',
         sub : user.id,
-        iat : new Date().getTime()
+        iat : Date.now()
     } , process.env.API_KEY , {expiresIn : '24h'})
 }
 
@@ -82,7 +82,7 @@ const login = async (req,res,next) => {
     })
     if (!user) return next(customError('Email or username not valid',401))
     const compare = comparePassword(password,user.password)
-    if (!compare) return next(customError('Password not valid'))
+    if (!compare) return next(customError('Password not valid',401))
     // set token
     const token = signToken(user)
     response(res,'success',{token},'Login successfull',200)
