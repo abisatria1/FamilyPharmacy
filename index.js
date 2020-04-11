@@ -2,13 +2,17 @@ const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
 const db = require('./config/database')
-const userRoute = require('./routes/userRoute')
 const dotenv = require('dotenv').config()
 const {response} = require('./helpers/wrapper')
+const Sequelize = require('sequelize')
+const passport = require('passport')
+const auth = require('./helpers/auth')
+// routes
+const userRoute = require('./routes/userRoute')
+const drugRoute = require('./routes/drugRoute')
 
 // global variable
-global.Sequelize = require('sequelize')
-global.Op = global.Sequelize.Op
+global.Op = Sequelize.Op
 
 // models
 const User = require('./models/User')
@@ -21,6 +25,7 @@ app.use(bodyParser.json())
 
 // routes
 app.use('/users' , userRoute)
+app.use('/drugs', passport.authenticate('jwt', {session : false}) , drugRoute)
 
 app.use((req,res,next) => {
     const error = new Error('Request not found')
@@ -44,4 +49,4 @@ app.listen(port , () => {
         console.log(`port is running in port ${port}`)
     })
     .catch(err => console.log(err.message))
-})
+})  
