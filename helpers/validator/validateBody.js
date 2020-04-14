@@ -1,6 +1,7 @@
 const Joi = require('joi')
 const {response} = require('../wrapper')
 const User = require('../../models/User')
+const Drug = require('../../models/Drug')
 const {comparePassword} = require('../hashHelper')
 
 const validateBody = (schema) => {
@@ -71,9 +72,34 @@ const validateUser = () => {
     }
 }
 
+const validateStok = () => {
+    return async (req,res,next) => {
+        const {transaksi} = req.body
+        let i = 0
+        let error=  []
+        while (i < transaksi.length) {
+            let drug = await Drug.findByPk(transaksi[i].id)
+            if (drug.stokObat - transaksi[i].quantity < 0) error.push(drug) 
+            i++
+        }
+        if (error.length != 0 ) return response(res,'fail',error,'Drug out of stock',400)
+        next()
+    }
+}
+
+const validateTanggal = () => {
+    return (req,res,next) => {
+        const {tanggalAwal,tanggalAkhir} = req.body
+        if (tanggalAwal > tanggalAkhir) return response(res,'fail',null,'End date must greater than start date',400)
+        next()
+    }
+}
+
 module.exports = {
     validateBody,
     validateUsernameAndEmail,
     validatePassword,
-    validateUser
+    validateUser,
+    validateStok,
+    validateTanggal
 }
