@@ -71,5 +71,11 @@ router.route('/delete/:userId')
 router.route('/login')
     .post(validateBody(loginSchema),userController.login)
 
-
+// search
+router.route('/search')
+    .get(
+        passport.authenticate('jwt',{session:false}),
+        validateUser(),
+        userController.searchUser
+    )
 module.exports = router
