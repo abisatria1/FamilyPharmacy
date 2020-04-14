@@ -7,9 +7,12 @@ router.route('/')
     .get(drugController.index)
     .post(validateBody(drugSchema),drugController.createDrug)
 
+router.route('/search').get(drugController.searchDrug)
+
 router.route('/:drugId')
     .get(drugController.viewDrugDetail)
     .delete(drugController.deleteDrug)
     .patch(validateBody(drugSchema),drugController.updateDrug)
+
 
 module.exports = router
