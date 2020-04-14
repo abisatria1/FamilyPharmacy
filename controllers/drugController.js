@@ -67,11 +67,32 @@ const updateDrug = async(req,res,next) => {
     response(res,'success',drug,'Drug has been update',200)
 }
 
+/*
+fungsi yang digunakan untuk mencari data obat berdasarkan param
+ketentuan : 1. user harus login
+*/
+const searchDrug = async (req,res,next) => {
+    const {param} = req.body
+    const drugs = await Drug.findAll({
+        where : {
+            [Op.or] : [
+                {namaObat : {[Op.like] : `%${param}%`}},
+                {jenisObat : {[Op.like] : `%${param}%`}},
+                {produsenObat : {[Op.like] : `%${param}%`}},
+                {stokObat : {[Op.like] : `%${param}%`}},
+                {hargaObat : {[Op.like] : `%${param}%`}},
+                {descObat : {[Op.like] : `%${param}%`}},
+            ]
+        }
+    })
+    response(res,'success',drugs,'All drugs has been fetched',200)
+}
 
 module.exports = {
     index,
     createDrug,
     viewDrugDetail, 
     deleteDrug,
-    updateDrug
+    updateDrug,
+    searchDrug
 }
