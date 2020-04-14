@@ -88,6 +88,23 @@ const login = async (req,res,next) => {
     response(res,'success',{token},'Login successfull',200)
 }
 
+const searchUser = async(req,res,next) => {
+    const {param} = req.body
+    const user = await User.findAll({
+        where : {
+            [Op.or] : [
+                {namaUser : {[Op.like] : `%${param}%`}},
+                {umurUser : {[Op.like] : `%${param}%`}},
+                {alamatUser : {[Op.like] : `%${param}%`}},
+                {notelpUser : {[Op.like] : `%${param}%`}},
+                {emailUser : {[Op.like] : `%${param}%`}},
+                {username : {[Op.like] : `%${param}%`}}
+            ]
+        }
+    })
+    response(res,'success',user,'All users has been fetched',200)
+}
+
 
 module.exports = {
     index,
@@ -97,5 +114,6 @@ module.exports = {
     updateProfile,
     updateAccount,
     updatePassword,
-    login
+    login,
+    searchUser
 }
