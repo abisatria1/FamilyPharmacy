@@ -10,21 +10,22 @@ const auth = require('./helpers/auth')
 // routes
 const userRoute = require('./routes/userRoute')
 const drugRoute = require('./routes/drugRoute')
+const orderRoute = require('./routes/orderRoute')
 
 // global variable
 global.Op = Sequelize.Op
 
-// models
-const User = require('./models/User')
+// relation
+const relation = require('./config/relation')
 
 // middleware
-
 // bodyParser
 app.use(bodyParser.urlencoded({extended : false}))
 app.use(bodyParser.json())
 
 // routes
 app.use('/users' , userRoute)
+app.use('/orders' , passport.authenticate('jwt', {session : false}), orderRoute)
 app.use('/drugs', passport.authenticate('jwt', {session : false}) , drugRoute)
 
 app.use((req,res,next) => {
