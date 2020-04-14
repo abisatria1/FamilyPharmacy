@@ -11,6 +11,7 @@ const auth = require('./helpers/auth')
 const userRoute = require('./routes/userRoute')
 const drugRoute = require('./routes/drugRoute')
 const orderRoute = require('./routes/orderRoute')
+const scheduleRoute = require('./routes/scheduleRoute')
 
 // global variable
 global.Op = Sequelize.Op
@@ -27,6 +28,7 @@ app.use(bodyParser.json())
 app.use('/users' , userRoute)
 app.use('/orders' , passport.authenticate('jwt', {session : false}), orderRoute)
 app.use('/drugs', passport.authenticate('jwt', {session : false}) , drugRoute)
+app.use('/schedules', passport.authenticate('jwt', {session : false}) , scheduleRoute)
 
 app.use((req,res,next) => {
     const error = new Error('Request not found')

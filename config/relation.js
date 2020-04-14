@@ -3,6 +3,7 @@ const User = require('../models/User')
 const Drug = require('../models/Drug')
 const Order = require('../models/Order')
 const Include = require('../models/Include')
+const Schedule = require('../models/Schedule')
 
 // relasi
 User.hasMany(Order)
@@ -20,3 +21,6 @@ Drug.belongsToMany(Order, {
         unique :false
     }
 })
+
+User.hasMany(Schedule)
+Schedule.belongsTo(User)
