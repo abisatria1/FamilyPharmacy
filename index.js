@@ -7,17 +7,41 @@ const {response} = require('./helpers/wrapper')
 const Sequelize = require('sequelize')
 const passport = require('passport')
 const auth = require('./helpers/auth')
+const cors = require('cors')
 // routes
 const userRoute = require('./routes/userRoute')
 const drugRoute = require('./routes/drugRoute')
 const orderRoute = require('./routes/orderRoute')
 const scheduleRoute = require('./routes/scheduleRoute')
 
+var allowedOrigins = [
+    "http://127.0.0.1:5500",
+    "http://localhost:3001",
+    "bot-linecoba.herokuapp.com"
+]
+
+app.use(
+    cors({
+        origin: function (origin, callback) {
+        if (!origin) return callback(null, true);
+        if (allowedOrigins.indexOf(origin) === -1) {
+            var msg =
+            "The CORS policy for this site does not " +
+            "allow access from the specified Origin.";
+            return callback(new Error(msg), false);
+        }
+        return callback(null, true);
+        }
+    })
+)
+
 // global variable
 global.Op = Sequelize.Op
 
 // relation
 const relation = require('./config/relation')
+
+
 
 // middleware
 // bodyParser
