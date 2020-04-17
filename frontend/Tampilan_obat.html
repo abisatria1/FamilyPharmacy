@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/tampilan.css">
+    <title></title>
+  </head>
+  <body>
+    <!-- vektor -->
+    <div class="background">
+      <div class="vektor4">
+        <img src="img/Vector4.png" alt="">
+      </div>
+      <div class="vektor5 text-right">
+        <img src="img/Vector5.png" alt="">
+      </div>
+    </div>
+    <!-- akhir vektor -->
+    <!-- awal card -->
+    <div class="container kotak">
+        <div class="card shadow-sm p-3 mb-5 bg-white rounded">
+            <div class="container">
+              <div class="box">
+                <h4 class="text-left mt-5"><b>Data Obat</b></h4>
+                <a href="#" class="btn btn-dark">Tambah Data Obat</a>
+                <br><br>
+                <div class="card card-body" style="width: 105rem;" >
+                  <table class="table mt-3" id="table">
+                    <thead>
+                      <tr>
+                        <th class="text-center" scope="col">No.</th>
+                        <th class="text-left" scope="col">Nama obat</th>
+                        <th class="text-center" scope="col">Produsen obat</th>
+                        <th class="text-center" scope="col">Jenis obat</th>
+                        <th class="text-center" scope="col">Harga</th>
+                        <th class="text-center" scope="col">Stok</th>
+                        <th class="text-center" scope="col">Aksi</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <form action="">
+                          <td class="text-center">null</td>
+                          <td class="text-left">null</td>
+                          <td class="text-center">null</td>
+                          <td class="text-center">null</td>
+                          <td class="text-center">null</td>
+                          <td class="text-center">null</td>
+                          <td class="text-center">
+                              <a href="#" class="btn badge-success float-center btn-sm" ?>Detail</a>
+                              <a href="#" class="btn badge-warning float-center btn-sm" ?>Edit</a>
+                              <a href="#" class="btn badge-danger float-center btn-sm" onclick="return confirm('Apakah anda yakin menghapus data ini?');" ?>hapus</a>
+                          </td>
+                        </form>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+            </div>
+    <!-- akhir card -->
+  </body>
+  <script type="text/javascript">
+    $(document).ready( function () {
+        $('#table').DataTable({
+          "lengthMenu" : [[5,10,30,50, -1], [5,10,30,50,"All"]]
+        });
+    } );
+  </script>
+</html>

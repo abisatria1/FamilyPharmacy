@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans:400,400i,700,700i&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body{
+    background: linear-gradient(180deg, rgb(92, 89, 110) 0%, #3F3D56 100%);
+}
+
+.header-container{
+    background: #FFFFFF url('../img/wave1.svg');
+    background-repeat: no-repeat;
+    background-position: right;
+    height: 823px;
+    width: 1542px;
+    margin: 0 0 0 -120px;
+}
+
+.bg-wave {
+    width: 402px;
+    height: 458px;
+}
+
+.content-img {
+    position: absolute;
+    width: 785px;
+    height: 495px;
+    left: 56px;
+    top: 119px;
+}
+
+.login-txt {
+    position: absolute;
+    width: 134.91px;
+    height: 76px;
+    left: 1121.55px;
+    top: 237px;
+
+    font-family: 'Noto Sans', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 48px;
+    line-height: 65px;
+
+    color: #F8FF64;
+}
+
+#param {
+    position: absolute;
+    width: 292px;
+    height: 40px;
+    left: 1043px;
+    top: 332px;
+
+    font-family: 'Noto Sans', sans-serif;
+    background: #FFFFFF;
+    border-radius: 25px;
+    font-size: 12px;
+}
+
+#password {
+    position: absolute;
+    width: 292px;
+    height: 40px;
+    left: 1043.5px;
+    top: 395px;
+
+    font-family: 'Noto Sans', sans-serif;
+    background: #FFFFFF;
+    border-radius: 25px;
+    font-size: 12px;
+}
+
+.forgot {
+    position: absolute;
+    width: 95.33px;
+    height: 13px;
+    left: 1240.17px;
+    top: 447px;
+
+    font-family: 'Noto Sans', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 11px;
+    line-height: 15px;
+    text-align: center;
+
+    color: #9E9BB8;
+}
+
+.forgot:hover {
+    color: #665F96;
+    text-decoration: none;
+}
+
+.submit {
+    position: absolute;
+    width: 291.99px;
+    height: 39.63px;
+    left: 1043.23px;
+    top: 474.5px;
+
+    background: #F8FF64;
+    border-radius: 25px;
+
+    font-family: 'Noto Sans', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 27px;
+
+    color: #3F3D56;
+}
+
+.label {
+    position: absolute;
+width: 90px;
+height: 14.63px;
+left: 1055.4px;
+top: 447.87px;
+
+font-family: 'Noto Sans', sans-serif;
+font-style: normal;
+font-weight: normal;
+font-size: 10px;
+line-height: 20px;
+text-align: center;
+
+color: #FFFFFF;
+}
+
+.alert {
+    width: 292px;
+    position: absolute;
+    left: 1042px;
+    top: 524.5px;
+    padding : 8px;
+    text-align: center;
+}
+
+#error {
+    color: black;
+}
+
