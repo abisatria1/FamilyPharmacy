@@ -10,10 +10,38 @@
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+    <!-- axios -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    
+    <!-- custom css -->
     <link rel="stylesheet" href="css/tampilan.css">
+    <link rel="stylesheet" href="css/navbar.css">
+
+    <!-- custom js -->
+    <script src="js/function.js"></script>
+    <script src="js/obat.js"></script>
     <title></title>
   </head>
   <body>
+
+  <!-- nabar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container">
+          <a class="navbar-header" href="home.html"><img src="img/logoKuning.svg" alt="Logo.png">Familiy Pharmacy</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div class="navbar-nav navbar-right">
+                  <!-- isi navbar -->
+              </div>
+          </div>
+      </div>
+  </nav>
+  <!-- akhir navbar -->
+
+
     <!-- vektor -->
     <div class="background">
       <div class="vektor4">
@@ -46,32 +74,11 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <form action="">
-                          <td class="text-center">null</td>
-                          <td class="text-left">null</td>
-                          <td class="text-center">null</td>
-                          <td class="text-center">null</td>
-                          <td class="text-center">null</td>
-                          <td class="text-center">null</td>
-                          <td class="text-center">
-                              <a href="#" class="btn badge-success float-center btn-sm" ?>Detail</a>
-                              <a href="#" class="btn badge-warning float-center btn-sm" ?>Edit</a>
-                              <a href="#" class="btn badge-danger float-center btn-sm" onclick="return confirm('Apakah anda yakin menghapus data ini?');" ?>hapus</a>
-                          </td>
-                        </form>
-                      </tr>
+                      
                     </tbody>
                   </table>
                 </div>
             </div>
     <!-- akhir card -->
   </body>
-  <script type="text/javascript">
-    $(document).ready( function () {
-        $('#table').DataTable({
-          "lengthMenu" : [[5,10,30,50, -1], [5,10,30,50,"All"]]
-        });
-    } );
-  </script>
 </html>
