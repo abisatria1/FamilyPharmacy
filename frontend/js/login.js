@@ -7,11 +7,6 @@ const login = async response => {
             sessionStorage.setItem('token', token);
             sessionStorage.setItem('user', JSON.stringify(user));
             window.location = "home.html";
-            // if (user.statusUser == "0") {
-            //     window.location = "home_pegawai.html"
-            // }else if (user.statusUser == "1"){
-            //     window.location = "home_pemilik.html"
-            // }
         })
         .catch(function(err) {
             failed(err.response.data)
