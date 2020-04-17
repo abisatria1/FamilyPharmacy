@@ -6,11 +6,12 @@ const login = async response => {
             const user = response.data.data
             sessionStorage.setItem('token', token);
             sessionStorage.setItem('user', JSON.stringify(user));
-            if (user.statusUser == "0") {
-                window.location = "home_pegawai.html"
-            }else if (user.statusUser == "1"){
-                window.location = "home_pemilik.html"
-            }
+            window.location = "home.html";
+            // if (user.statusUser == "0") {
+            //     window.location = "home_pegawai.html"
+            // }else if (user.statusUser == "1"){
+            //     window.location = "home_pemilik.html"
+            // }
         })
         .catch(function(err) {
             failed(err.response.data)
@@ -42,8 +43,17 @@ const requestUser = token => {
     })
 }
 
+const cekLogOut = () => {
+    const token = sessionStorage.getItem('token')
+    if (token){
+        sessionStorage.removeItem('token')
+        sessionStorage.removeItem('user')
+    }
+}
+
 $(document).ready(function() {
     $('#error').hide();
+    cekLogOut()
     $('form').submit(function(e) {
         e.preventDefault();
         const password = $('#password').val();
