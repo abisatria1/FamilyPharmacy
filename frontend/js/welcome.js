@@ -1,6 +1,5 @@
 const isiUser = () => {
-    const raw = sessionStorage.getItem('user');
-    const user = JSON.parse(raw);
+    const user = getUserFromSession();
     let text = ``;
     if (user.statusUser == "0" ){
         // ini pegawai

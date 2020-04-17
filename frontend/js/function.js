@@ -36,3 +36,9 @@ const cekUser = (statusUser,statusValid) => {
         window.location = "notAllowed.html";
     }
 }
+
+const getUserFromSession = () => {
+    const raw = sessionStorage.getItem('user');
+    const user = JSON.parse(raw);
+    return user;
+}
