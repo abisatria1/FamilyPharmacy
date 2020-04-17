@@ -1,0 +1,184 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans:400,400i,700,700i&display=swap');
+
+
+* {
+    box-sizing: border-box;
+}
+
+#rec {
+    position: absolute;
+width: 1442px;
+height: 720px;
+left: 0px;
+top: 0px;
+}
+
+#vec1 {
+    position: absolute;
+width: 1465px;
+height: 488px;
+left: -72px;
+top: 324px;
+}
+
+#vec2{
+    position: absolute;
+width: 1862px;
+height: 611px;
+left: 0px;
+top: 360px;
+}
+
+.content {
+    position: absolute;
+width: 1175.16px;
+height: 584.09px;
+left: 140.86px;
+top: 135.91px;
+
+background: #FFFFFF;
+box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+.content h3 {
+    position: absolute;
+    width: 76.62px;
+    height: 17.97px;
+    left: 70.98px;
+    top: 44.93px;
+
+font-family: 'Noto Sans', sans-serif;
+font-style: normal;
+font-weight: bold;
+font-size: 12px;
+line-height: 16px;
+
+color: #434055;
+}
+
+.line {
+    position: absolute;
+width: 1018.55px;
+height: 1.12px;
+left: 70.98px;
+top: 90.98px;
+
+background: #C4C4C4;
+}
+
+.txt-line {
+    position: absolute;
+width: 166.75px;
+height: 17.97px;
+left: 70.98px;
+top: 115.69px;
+
+font-family: 'Noto Sans',sans-serif;
+font-style: normal;
+font-weight: bold;
+font-size: 12px;
+line-height: 16px;
+
+color: #434055;
+
+}
+
+.form {
+    position: absolute;
+width: 287.31px !important;
+height: 35.94px !important;
+left: 70.98px;
+top: 140.36px;
+}
+
+.pic {
+    position: absolute;
+width: 127.32px;
+height: 126.93px;
+left: 70.98px;
+top: 190.95px;
+
+}
+
+.name-pic{
+    position: absolute;
+    width: 234.36px;
+height: 130.3px;
+left: 219.71px;
+top: 190.95px;
+
+font-family: 'Noto Sans', sans-serif;
+font-style: normal;
+font-weight: bold;
+font-size: 12px;
+line-height: 16px;
+
+color: #434055;
+
+}
+
+.desc{
+    position: absolute;
+width: 63.1px;
+height: 17.97px;
+top: 332.48px !important;
+
+font-family: Noto Sans Bengali UI;
+font-style: normal;
+font-weight: bold;
+font-size: 12px;
+line-height: 16px;
+
+color: #434055;
+}
+
+.dsc-txt {
+    position: absolute;
+width: 1018.55px;
+height: 89.86px;
+left: 70.98px;
+top: 412.19px;
+
+font-family: 'Noto Sans', sans-serif;
+font-style: normal;
+font-weight: 500;
+font-size: 12px;
+line-height: 16px;
+
+color: #434055;
+}
+
+.name-pic span {
+    font-weight: normal;
+}
+
+.jml{
+    position: absolute;
+width: 46.2px;
+height: 15.73px;
+left: 760.25px;
+top: 453px;
+
+font-family: 'Noto Sans', sans-serif;
+font-style: normal;
+font-weight: bold;
+font-size: 12px;
+line-height: 14px;
+
+color: #434055;
+}
+
+.order {
+    position: absolute;
+width: 126.19px;
+height: 37.07px;
+left: 963.34px;
+top: 486.37px;
+
+background: #434055;
+border-radius: 5px;
+}
+
+.order:hover{
+    background: #605C76;
+}

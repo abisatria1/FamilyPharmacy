@@ -14,9 +14,9 @@ const isiUser = () => {
         text = "Pegawai yang hebat, mulailah hari dengan penuh semangat dan jangan lupa untuk istirahat dan jaga kesehatan dengan baik. SEMANGAT";
         navbar = 
         `
-            <a class="nav-item nav-link" href="#" id ="active">Beranda</a>
-            <a class="nav-item nav-link" href="#">Order</a>
-            <a class="nav-item nav-link" href="#">Obat</a>
+            <a class="nav-item nav-link" href="home.html" id ="active">Beranda</a>
+            <a class="nav-item nav-link" href="order.html">Order</a>
+            <a class="nav-item nav-link" href="Tampilan_obat.html">Obat</a>
             <a class="nav-item nav-link" href="#">Akun Saya</a>
             <a class="nav-item nav-link" href="login.html">Log Out</a>
         `
@@ -25,10 +25,10 @@ const isiUser = () => {
         text = "Pemilik perusahaan yang tercinta. Hari ini sangat istimewa karena penjualan sedang baik";
         navbar = 
         `
-            <a class="nav-item nav-link" href="#" id ="active">Beranda</a>
+            <a class="nav-item nav-link" href="home.html" id ="active">Beranda</a>
             <a class="nav-item nav-link" href="#">Pegawai</a>
-            <a class="nav-item nav-link" href="#">Order</a>
-            <a class="nav-item nav-link" href="#">Obat</a>
+            <a class="nav-item nav-link" href="order.html">Order</a>
+            <a class="nav-item nav-link" href="Tampilan_obat.html">Obat</a>
             <a class="nav-item nav-link" href="#">Akun Saya</a>
             <a class="nav-item nav-link" href="login.html">Log Out</a>
         `
