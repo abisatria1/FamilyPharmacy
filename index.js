@@ -38,6 +38,7 @@ app.use(
 // global variable
 global.Op = Sequelize.Op
 
+
 // relation
 const relation = require('./config/relation')
 
