@@ -2,10 +2,11 @@ const router = require('express-promise-router')()
 const drugController = require('../controllers/drugController')
 const {drugSchema} = require('../models/schemas/drugSchemas')
 const {validateBody} = require('../helpers/validator/validateBody')
+const {upload} = require('../helpers/uploadHelper')
 
 router.route('/')
     .get(drugController.index)
-    .post(validateBody(drugSchema),drugController.createDrug)
+    .post(upload.single('fotoObat') ,validateBody(drugSchema),drugController.createDrug)
 
 router.route('/search').get(drugController.searchDrug)
 

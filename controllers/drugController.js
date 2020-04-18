@@ -1,6 +1,7 @@
 const Drug = require('../models/Drug')
 const {customError,response} = require('../helpers/wrapper')
 const dotenv = require('dotenv').config()
+const fs = require('fs')
 
 /*
 fungsi yang digunakan untuk melihat seluruh data obat
@@ -16,6 +17,7 @@ fungsi yang digunakan untuk menambahkan data obat
 ketentuan : 1. user harus login
 */
 const createDrug = async(req,res,next) => {
+    req.body.fotoObat = "localhost:3001/" + req.file.path
     const drug = await Drug.create(req.body)
     response(res,'success',drug,'Drug has been created',201)
 }
@@ -35,10 +37,14 @@ fungsi yang digunakan untuk menghapus data obat dengan id obat
 ketentuan : 1. user harus login
 */
 const deleteDrug = async(req,res,next) => {
-    const deleteDrug = await Drug.destroy({
-        where : {id : req.params.drugId}
+    const deleteDrug = await Drug.findByPk(req.params.drugId)
+    if (!deleteDrug) response(res,'fail',null,'Drug not found',400)
+    const filePath = deleteDrug.fotoObat
+    const arrPath = filePath.split('/')
+    fs.unlink(arrPath[1] , err => {
+        if (err) return response(res,'fail',null,'Error delete image on local storage',500)
     })
-    if (deleteDrug === 0 ) return response(res,'fail',null,'Drug failed to delete or drug not found',400)
+    await deleteDrug.destroy()    
     response(res,'success',null,'Drug has been delete',200)
 }
 
@@ -53,7 +59,7 @@ const updateDrug = async(req,res,next) => {
         produsenObat,
         stokObat,
         hargaObat,
-        fotoObat
+        descObat
     } = req.body
     const drug = await Drug.findByPk(req.params.drugId)
     if (!drug) return response(res,'fail',null,'Drug not found',400)
@@ -62,7 +68,7 @@ const updateDrug = async(req,res,next) => {
     drug.produsenObat = produsenObat
     drug.stokObat = stokObat
     drug.hargaObat = hargaObat
-    drug.fotoObat = fotoObat
+    drug.descObat = descObat
     await drug.save()
     response(res,'success',drug,'Drug has been update',200)
 }

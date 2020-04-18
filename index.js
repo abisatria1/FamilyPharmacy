@@ -49,6 +49,9 @@ const relation = require('./config/relation')
 app.use(bodyParser.urlencoded({extended : false}))
 app.use(bodyParser.json())
 
+// public folder
+app.use('/uploads' , express.static('uploads'))
+
 // routes
 app.use('/users' , userRoute)
 app.use('/orders' , passport.authenticate('jwt', {session : false}), orderRoute)

@@ -6,7 +6,7 @@ const drugSchema = Joi.object().keys({
     produsenObat : Joi.string().required(),
     stokObat : Joi.number().required(),
     hargaObat : Joi.number().required(),
-    fotoObat : Joi.string().required(),
+    fotoObat : Joi.any(),
     descObat : Joi.string().required()
 })
 
