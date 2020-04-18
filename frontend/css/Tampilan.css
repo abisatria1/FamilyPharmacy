@@ -34,12 +34,13 @@ body{
 
 
 /* modal */
-#modal form {
-  width: 70%;
+#modal form ,
+#tambahModal form{
+  width: 80%;
   margin: 16px auto;
 }
 
-#modal .customBtn {
+.customBtn {
   padding: 8px 34px;
   border: none;
   margin: auto;
@@ -53,11 +54,17 @@ body{
   color: white;
 }
 
-#modal .successBtn:hover {
+.successBtn:hover {
   background-color: #625d7c;
 }
 
-#modal .button {
+#modal .button ,
+#tambahModal .button {
   text-align: right;
 }
+
+#rp {
+  text-align: left;
+}
+
 /* end of modal */
