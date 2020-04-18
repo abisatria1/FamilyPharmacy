@@ -30,3 +30,33 @@ body{
 .kotak{
   margin-top: 100px;
 }
+
+
+/* modal */
+#modal form {
+  width: 70%;
+  margin: 16px auto;
+}
+
+#modal .customBtn {
+  padding: 8px 34px;
+  border: none;
+  margin: auto;
+  border-radius: 5px;
+  transition: 0.2s;
+  display: inline;
+}
+
+.successBtn {
+  background-color: #434055;
+  color: white;
+}
+
+#modal .successBtn:hover {
+  background-color: #625d7c;
+}
+
+#modal .button {
+  text-align: right;
+}
+/* end of modal */
