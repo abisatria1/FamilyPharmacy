@@ -14,7 +14,7 @@ const isiNavbar = statusUser => {
         navbar = 
         `
         <a class="nav-item nav-link" href="home.html" id ="active">Beranda</a>
-        <a class="nav-item nav-link" href="#">Pegawai</a>
+        <a class="nav-item nav-link" href="tampilan_pegawai.html">Pegawai</a>
         <a class="nav-item nav-link" href="order.html">Order</a>
         <a class="nav-item nav-link" href="Tampilan_obat.html">Obat</a>
         <a class="nav-item nav-link" href="#">Akun Saya</a>
