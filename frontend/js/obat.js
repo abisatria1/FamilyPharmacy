@@ -70,7 +70,7 @@ const editData = id => {
     // izimodal
     $('#modal').iziModal({
         title : 'Edit Obat',
-        subtitle : 'Diharapkan mengisi data dengan sesuai dan bertanggung jawab',
+        subtitle : 'Diharapkan mengisi data dengan benar dan bertanggung jawab',
         headerColor : '#434055',
         closeButton : true,
         width : 700,
@@ -78,6 +78,10 @@ const editData = id => {
             $('#modal form').empty();
         }
     });
+}
+
+const submitDataObat = async () => {
+    // 
 }
 
 
@@ -90,5 +94,14 @@ $(document).ready(async function(e) {
     $('#table').DataTable({
         "lengthMenu" : [[5,10,30,50, -1], [5,10,30,50,"All"]]
     });
-    
+    $('#tambahModal').iziModal({
+        title : 'Tambah Data Obat',
+        subtitle : 'Diharapkan mengisi data dengan benar dan bertanggung jawab',
+        headerColor : '#434055',
+        closeButton : true,
+        width : 900,
+        onClosed : function() {
+            $('#tambahModal input').val('');
+        }
+    });
 })
