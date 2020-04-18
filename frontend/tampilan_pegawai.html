@@ -1,78 +1,106 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/tampilan.css">
-    <title></title>
-  </head>
-  <body>
-    <!-- vektor -->
-    <div class="background">
-      <div class="vektor4">
-        <img src="img/Vector4.png" alt="">
-      </div>
-      <div class="vektor5 text-right">
-        <img src="img/Vector5.png" alt="">
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js">
+  </script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+  <!-- axios -->
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+  <!-- custom css -->
+  <link rel="stylesheet" href="css/tampilan.css">
+  <link rel="stylesheet" href="css/navbar.css">
+
+  <!-- custom js -->
+  <script src="js/function.js"></script>
+  <script src="js/pegawai.js"></script>
+
+
+  <!-- izimodal -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/izimodal/1.5.1/js/iziModal.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izimodal/1.5.1/css/iziModal.css">
+
+  <title></title>
+</head>
+
+<body>
+  <!-- nabar -->
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+      <a class="navbar-header" href="home.html"><img src="img/logoKuning.svg" alt="Logo.png">Familiy Pharmacy</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav navbar-right">
+          <!-- isi navbar -->
+        </div>
       </div>
     </div>
-    <!-- akhir vektor -->
-    <!-- awal card -->
-    <div class="container kotak">
-        <div class="card shadow-sm p-3 mb-5 bg-white rounded">
-            <div class="container">
-              <div class="box">
-                <h4 class="text-left mt-5"><b>Data Pegawai</b></h4>
-                <a href="#" class="btn btn-dark">Tambah Data Pegawai</a>
-                <br><br>
-                <div class="card card-body" style="width: 105rem;" >
-                  <table class="table mt-3" id="table">
-                    <thead>
-                      <tr>
-                        <th class="text-center" scope="col">No.</th>
-                        <th class="text-left" scope="col">Nama Pegawai</th>
-                        <th class="text-center" scope="col">Umur</th>
-                        <th class="text-center" scope="col">No Telepon</th>
-                        <th class="text-center" scope="col">Email</th>
-                        <th class="text-center" scope="col">Username</th>
-                        <th class="text-center" scope="col">Password</th>
-                        <th class="text-center" scope="col">Alamat</th>
-                        <th class="text-center" scope="col">Aksi</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <form action="">
-                          <td class="text-center">null</td>
-                          <td class="text-left">null</td>
-                          <td class="text-center">null</td>
-                          <td class="text-center">null</td>
-                          <td class="text-center">null</td>
-                          <td class="text-center">null</td>
-                          <td class="text-center">null</td>
-                          <td class="text-center">null</td>
-                          <td class="text-center">
-                              <a href="#" class="btn badge-warning float-center btn-sm" ?>Edit</a>
-                              <a href="#" class="btn badge-danger float-center btn-sm" onclick="return confirm('Apakah anda yakin menghapus data ini?');" ?>hapus</a>
-                          </td>
-                        </form>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-            </div>
-    <!-- akhir card -->
-  </body>
-  <script type="text/javascript">
-    $(document).ready( function () {
-        $('#table').DataTable();
-    } );
-  </script>
+  </nav>
+  <!-- akhir navbar -->
+
+  <!-- modal -->
+  <div id="modal">
+    <form action="">
+      <!-- content -->
+    </form>
+  </div>
+  <!-- end of modal -->
+
+  <!-- vektor -->
+  <div class="background">
+    <div class="vektor4">
+      <img src="img/Vector4.png" alt="">
+    </div>
+    <div class="vektor5 text-right">
+      <img src="img/Vector5.png" alt="">
+    </div>
+  </div>
+  <!-- akhir vektor -->
+  <!-- awal card -->
+  <div class="container kotak">
+    <div class="card shadow-sm p-3 mb-5 bg-white rounded">
+      <div class="container">
+        <div class="box">
+          <h4 class="text-left mt-5"><b>Data Pegawai</b></h4>
+          <a href="#" class="btn btn-dark">Tambah Data Pegawai</a>
+          <br><br>
+          <div class="card card-body" style="width: 105rem;">
+            <table class="table mt-3" id="table">
+              <thead>
+                <tr>
+                  <th class="text-center" scope="col">No.</th>
+                  <th class="text-left" scope="col">Nama Pegawai</th>
+                  <th class="text-center" scope="col">Umur</th>
+                  <th class="text-center" scope="col">No Telepon</th>
+                  <th class="text-center" scope="col">Email</th>
+                  <th class="text-center" scope="col">Username</th>
+                  <th class="text-center" scope="col">Password</th>
+                  <th class="text-center" scope="col">Alamat</th>
+                  <th class="text-center" scope="col" style="width: 180px;">Aksi</th>
+                </tr>
+              </thead>
+              <tbody>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <!-- akhir card -->
+</body>
+
+
 </html>
