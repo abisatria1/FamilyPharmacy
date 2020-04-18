@@ -14,7 +14,16 @@ const isiNavbar = statusUser => {
         navbar = 
         `
         <a class="nav-item nav-link" href="home.html" id ="active">Beranda</a>
-        <a class="nav-item nav-link" href="tampilan_pegawai.html">Pegawai</a>
+        <li class="nav-item dropdown ">
+            <a class="nav-link dropdown-toggle" href="tampilan_pegawai.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Pegawai
+            </a>
+            <div class="dropdown-menu rounded" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="tampilan_pegawai.html"><p class="text-dark">Lihat Pegawai</p></a>
+            <a class="dropdown-item" href="#"><p class="text-dark">Jadwal Pegawai</p></a>
+        </div>
+       </li>
+
         <a class="nav-item nav-link" href="order.html">Order</a>
         <a class="nav-item nav-link" href="Tampilan_obat.html">Obat</a>
         <a class="nav-item nav-link" href="#">Akun Saya</a>

@@ -14,7 +14,8 @@
     margin-bottom: 4px;
 }
 
-.navbar-brand , .navbar-header{
+.navbar-brand,
+.navbar-header {
     font-weight: bold;
     font-size: 24px !important;
 }
@@ -30,13 +31,11 @@
 
 .navbar-nav a {
     margin-right: 26px !important;
-    border-radius: 8px;
     transition: 0.1s;
 }
 
 .navbar-nav a:hover {
-    background-color: #F8FF64;
-    color: rgb(97, 95, 117) !important;
+    border-bottom: 1.5px solid #F8FF64;
 }
 
 .navbar {
@@ -58,3 +57,14 @@
     font-weight: 800;
 }
 
+.dropdown-item {
+    color: black;
+}
+.dropdown:hover>.dropdown-menu {
+    display: block;
+}
+
+.dropdown>.dropdown-toggle:active {
+    /*Without this, clicking will make it sticky*/
+    pointer-events: none;
+}

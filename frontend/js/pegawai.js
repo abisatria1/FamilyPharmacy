@@ -4,7 +4,7 @@ const isiDataPegawai = async () => {
         const result = await requestDataPegawai(token);
         $(result.data.data).each(function (i, item) {
             let string =
-                `
+            `
             <tr id="row${item.id}">
             <form action="">
                 <td class="text-center">${i+1}</td>
