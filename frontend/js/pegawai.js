@@ -13,7 +13,6 @@ const isiDataPegawai = async () => {
                 <td class="text-center notelpUser">${item.notelpUser}</td>
                 <td class="text-center emailUser">${item.emailUser}</td>
                 <td class="text-center username">${item.username}</td>
-                <td class="text-center password">${item.password}</td>
                 <td class="text-center alamatUser">${item.alamatUser}</td>
                 <td class="text-center">
                     <a href="" data-izimodal-open="#modal" class="editBtn btn badge-warning float-center btn-sm" onclick="editData(${item.id})"?>Edit</a>
