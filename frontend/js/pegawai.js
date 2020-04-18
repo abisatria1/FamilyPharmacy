@@ -1,3 +1,5 @@
+
+
 const isiDataPegawai = async () => {
     try {
         const token = sessionStorage.getItem('token');
@@ -95,5 +97,16 @@ $(document).ready(async function (e) {
     });
     
     $('.dataTables_length').addClass('bs-select');
+
+    $('#tambahModal').iziModal({
+        title : 'Tambah Data Pegawai',
+        subtitle : 'Diharapkan mengisi data dengan benar dan bertanggung jawab',
+        headerColor : '#434055',
+        closeButton : true,
+        width : 900,
+        onClosed : function() {
+            $('#tambahModal input').val('');
+        }
+    });
 
 })
