@@ -64,15 +64,15 @@
 
   <!-- tambah data obat modal -->
   <div id="tambahModal">
-    <form>
+    <form enctype="multipart/form-data">
         <div class="form-row">
             <div class="col">
                 <label for="inputNama">Nama Obat</label>
-                <input type="text" class="form-control" id="inputNama" placeholder="Nama Obat">
+                <input type="text" class="form-control" id="inputNama" placeholder="Nama Obat" name="namaObat">
             </div>
             <div class="col">
                 <label for="inputNama">Jenis Obat</label>
-                <input type="text" class="form-control" id="inputJenis" placeholder="Jenis Obat">
+                <input type="text" class="form-control" id="inputJenis" placeholder="Jenis Obat" name="jenisObat">
             </div>
         </div>
         <br>
@@ -80,12 +80,12 @@
         <div class="form-row">
             <div class="col-md-4">
                 <label for="inputStock">Stock</label>
-                <input type="text" class="form-control" id="inputStock" placeholder="Ex. 100">
+                <input type="number" class="form-control" id="inputStock" placeholder="Ex. 100" name="stokObat">
             </div>
             <div class="col">
                 <label for="inputProdusen">Produsen</label>
                 <input type="text" class="form-control" id="inputProdusen"
-                    placeholder="Nama Produsen">
+                    placeholder="Nama Produsen" name="produsenObat">
             </div>
         </div>
         <br>
@@ -95,18 +95,15 @@
                 <label for="inputHarga">Harga</label><br>
                 <label for="inputHarga" class="col-sm-3 col-form-label">Rp </label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" id="inputHarga" placeholder="Ex. 10000"
-                        style="margin-left: -25px;">
+                    <input type="number" class="form-control" id="inputHarga" placeholder="Ex. 10000"
+                        style="margin-left: -25px;" name='hargaObat'>
                 </div>
 
             </div>
             <div class="col">
                 <label for="inputGambar">Gambar</label>
-                <div class="custom-file">
-                    <input id="input-b3" name="input-b3[]" type="file" accept="image/*" class="file" multiple
-                        data-show-upload="false" data-show-caption="true" data-show-preview="false"
-                        data-msg-placeholder="Gambar.jpg">
-                </div>
+                <!-- <input type="file" name="fotoObat" required> -->
+                <input id="fotoObat" name="fotoObat" type="file" class="file" data-show-preview="false" data-show-upload="false">
             </div>
         </div>
         <br>
@@ -114,7 +111,7 @@
         <div class="form-row">
             <div class="col-md-12">
                 <label for="inputDeskripsi">Deskripsi</label>
-                <textarea class="form-control" id="inputDeskripsi" rows="3" placeholder="Masukkan deskripsi..."></textarea>
+                <textarea class="form-control" id="inputDeskripsi" rows="3" name="descObat" placeholder="Masukkan deskripsi..."></textarea>
             </div>
 
         </div>
@@ -122,7 +119,7 @@
 
         <div class="form-row">
             <div class="col-md-12 button">
-                <button type="submit"  class= "customBtn successBtn">Submit</button>
+                <button id="submit" class="customBtn successBtn" data-izimodal-close="#tambahModal">Submit</button>
                 <button class="customBtn btn-danger" data-izimodal-close="#tambahModal">Cancel</button>
             </div>
         </div>
@@ -148,7 +145,7 @@
             <div class="container">
               <div class="box">
                 <h4 class="text-left mt-5"><b>Data Obat</b></h4>
-                <a href="" class="btn btn-dark" data-izimodal-open="#tambahModal" onclick= "tambahData()">Tambah Data Obat</a>
+                <a href="" class="btn btn-dark" data-izimodal-open="#tambahModal">Tambah Data Obat</a>
                 <br><br>
                 <div class="card card-body" style="width: 105rem;" >
                   <table class="table mt-3" id="table">
