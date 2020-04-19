@@ -20,32 +20,36 @@ const validateUsernameAndEmail = () => {
         const email = await User.findOne({where : {emailUser}})
         const usernameUser = await User.findOne({where : {username}})
         if (email && usernameUser) {
-            if (req.user.id !== undefined) {
-                if (email.id !== req.user.id && usernameUser.id !== req.user.id){
-                    return response(res,'fail',null,'email and username has been used',400)
-                }
-            }else {
+            return response(res,'fail',null,'email and username has been used',400)
+        }else if (email) {
+            return response(res,'fail',null,'email has been used',400)
+        }else if (usernameUser) {
+            return response(res,'fail',null,'username has been used',400)
+        }
+        next()
+    }
+}
+
+const validateUsernameAndEmailOnUpdate = () => {
+    return async (req,res,next) => {
+        const {emailUser,username} = req.body
+        const email = await User.findOne({where : {emailUser}})
+        const usernameUser = await User.findOne({where : {username}})
+        if (email && usernameUser) {
+            if (email.id !== req.user.id && usernameUser.id !== req.user.id){
                 return response(res,'fail',null,'email and username has been used',400)
             }
         }else if (email) {
-            if (req.user.id !== undefined) {
-                if (email.id !== req.user.id){
+            if (email.id !== req.user.id){
                     return response(res,'fail',null,'email has been used',400)
-                }
-            }else {
-                return response(res,'fail',null,'email has been used',400)
             }
         }else if (usernameUser) {
-            if (req.user.id !== undefined) {
-                if (usernameUser.id !== req.user.id){
-                    return response(res,'fail',null,'username has been used',400)
-                }
-            }else {
+            if (usernameUser.id !== req.user.id){
                 return response(res,'fail',null,'username has been used',400)
             }
         }
         next()
-    }
+    }   
 }
 
 // untuk memvalidasi apakah password sudah sesuai ketentuan atau belum
@@ -98,6 +102,7 @@ const validateTanggal = () => {
 module.exports = {
     validateBody,
     validateUsernameAndEmail,
+    validateUsernameAndEmailOnUpdate,
     validatePassword,
     validateUser,
     validateStok,

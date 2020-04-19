@@ -17,7 +17,7 @@ fungsi yang digunakan untuk menambahkan data obat
 ketentuan : 1. user harus login
 */
 const createDrug = async(req,res,next) => {
-    req.body.fotoObat = "localhost:3001/" + req.file.path
+    req.body.fotoObat = "http://localhost:3001/" + req.file.path
     const drug = await Drug.create(req.body)
     response(res,'success',drug,'Drug has been created',201)
 }

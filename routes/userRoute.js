@@ -8,6 +8,7 @@ const auth = require('../helpers/auth')
 const {
     validateBody,
     validateUsernameAndEmail,
+    validateUsernameAndEmailOnUpdate,
     validatePassword,
     validateUser
 } = require('../helpers/validator/validateBody')
@@ -39,7 +40,7 @@ router.route('/')
 router.route('/account')
     .patch(
         passport.authenticate('jwt' , {session : false}), // validate token
-        [validateBody(accountSchema),validateUsernameAndEmail()] , //validate body
+        [validateBody(accountSchema),validateUsernameAndEmailOnUpdate()] , //validate body
         userController.updateAccount
     )
 
