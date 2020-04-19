@@ -14,10 +14,11 @@ const isiDataObat = async () => {
                     <td class="text-center hargaObat">${item.hargaObat}</td>
                     <td class="text-center stokObat">${item.stokObat}</td>
                     <td class="text-center">
-                        <a href="#" class="btn badge-success float-center btn-sm">Detail</a>
-                        <a href="" data-izimodal-open="#modal" class="editBtn btn badge-warning float-center btn-sm" onclick="editData(${item.id})">Edit</a>
+                        <a href="#" data-id = "${item.id}" data-izimodal-open="#detailModal" class="detailBtn btn badge-success float-center btn-sm">Detail</a>
+                        <a href="" data-id = "${item.id}" data-izimodal-open="#modal" class="editBtn btn badge-warning float-center btn-sm">Edit</a>
                         <a href="" data-id = "${item.id}" class="deleteBtn btn badge-danger float-center btn-sm">Hapus</a>
                     </td>
+                    <input type="hidden" value="${item.descObat}" class="descObat">
                 </form>
                 </tr>
                 `;
@@ -45,26 +46,36 @@ const editData = id => {
     const jenisObat = $(`#row${id} > .jenisObat`).text();
     const hargaObat = $(`#row${id} > .hargaObat`).text();
     const stokObat = $(`#row${id} > .stokObat`).text();
+    const descObat = $(`#row${id} > .descObat`).val();
     let string = 
     `
         <div class="form-group">
-            <input type="text" class="form-control" placeholder="Nama Obat" value="${namaObat}" required>
+            <p>Nama Obat</p>
+            <input type="text" class="form-control" id="namaObat" placeholder="Nama Obat" value="${namaObat}" required>
         </div>
         <div class="form-group">
-            <input type="text" class="form-control" placeholder="Produsen Obat" value="${produsenObat}" required >
+            <p>Produsen Obat</p>
+            <input type="text" class="form-control" id="produsenObat" placeholder="Produsen Obat" value="${produsenObat}" required >
         </div>
         <div class="form-group">
-            <input type="text" class="form-control" placeholder="Jenis Obat" value="${jenisObat}" required>
+            <p>Jenis Obat</p>
+            <input type="text" class="form-control" id="jenisObat" placeholder="Jenis Obat" value="${jenisObat}" required>
         </div>
         <div class="form-group">
-            <input type="number" class="form-control" placeholder="Harga Obat" value="${hargaObat}" required>
+            <p>Harga Obat</p>
+            <input type="number" class="form-control" id="hargaObat" placeholder="Harga Obat" value="${hargaObat}" required>
         </div>
         <div class="form-group">
-            <input type="number" class="form-control" placeholder="Stok Obat" value="${stokObat}" required>
+            <p>Stok Obat</p>
+            <input type="number" class="form-control" id="stokObat" placeholder="Stok Obat" value="${stokObat}" required>
+        </div>
+        <div class="form-group">
+            <p>Deskripsi Obat</p>
+            <textarea class="form-control" rows="3" id="descObat" placeholder="Masukkan deskripsi..." required >${descObat}</textarea>
         </div>
         <div class="button">
-            <input type="submit" class="customBtn successBtn">
-            <button class="customBtn btn-danger" data-izimodal-close="#modal">Cancel</button>
+            <button type="submit" id="submitBtn" data-id = "${id}" class="customBtn successBtn">Submit</button>
+            <button class="customBtn btn-danger cancelBtn" data-izimodal-close="#modal">Cancel</button>
         </div>
     `;
     $('#modal form').append(string);
@@ -81,6 +92,91 @@ const editData = id => {
     });
 }
 
+const isiDetailModal = async (id) => {
+    getDetailData(id)
+    .then(response => {
+        let item = response.data.data
+        let string = 
+        `
+        <div class="row">
+            <div class="col">
+            <div class="image">
+                <img src="${item.fotoObat}" width="600" height="300" alt="">
+            </div>
+            </div>
+        </div>
+        <div class="tulisanObat">
+            <div class="row">
+                <div class="col">
+                    <h2>${item.namaObat}</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    <label for="">Produsen Obat  </label>
+                </div>
+                <div class="col">
+                    <p>${item.produsenObat}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    <label for="">Jenis Obat  </label>
+                </div>
+                <div class="col">
+                    <p>${item.jenisObat}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    <label for="">Harga Obat  </label>
+                </div>
+                <div class="col">
+                    <p>${item.hargaObat}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    <label for="">Stok Obat  </label>
+                </div>
+                <div class="col">
+                    <p>${item.stokObat}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col" style="text-align : center;">
+                    <p>${item.descObat}</p>
+                </div>
+            </div>
+        </div>
+        `
+        $('#detailModal #detailContent').append(string)
+        $('#detailModal').iziModal({
+            title : 'Detail Obat',
+            headerColor : '#434055',
+            closeButton : true,
+            width : 600,
+            onClosed : function() {
+                $('#detailModal #detailContent').empty();
+            }
+        });
+    })
+    .catch(err => {
+        flashMessage(err.response.data.message,false)
+        window.location = 'Tampilan_obat.html'
+    })
+}
+
+const getDetailData = (id) => {
+    return axios({
+        url : 'http://localhost:3001/drugs/'+id,
+        method : 'GET',
+        headers : {
+            'Authorization' : sessionStorage.getItem('token')
+        },
+    })
+}
+
 const hapusData = async(id) => {
     axios({
         url : 'http://localhost:3001/drugs/'+id,
@@ -94,7 +190,35 @@ const hapusData = async(id) => {
         window.location = 'Tampilan_obat.html'
     })
     .catch(err => {
-        flashMessage(err.response.message,false)
+        flashMessage(err.response.data.message,false)
+        window.location = 'Tampilan_obat.html'
+    })
+}
+
+const updateData = async(id) => {
+    let data = {
+        namaObat : $('#modal #namaObat').val(),
+        produsenObat : $('#modal #produsenObat').val(),
+        jenisObat : $('#modal #jenisObat').val(),
+        hargaObat : $('#modal #hargaObat').val(),
+        stokObat : $('#modal #stokObat').val(),
+        descObat : $('#modal #descObat').val(),
+    }
+    axios({
+        url : 'http://localhost:3001/drugs/'+id,
+        method : 'PATCH',
+        headers : {
+            'Authorization' : sessionStorage.getItem('token')
+        },
+        data : data
+    })
+    .then (response => {
+        flashMessage(response.data.message,true)
+        window.location = 'Tampilan_obat.html'
+    })
+    .catch (err => {
+        flashMessage(err.response.data.message,false)
+        window.location = 'Tampilan_obat.html'
     })
 }
 
@@ -145,12 +269,20 @@ $(document).ready(async function() {
             $('#tambahModal input').val('');
         }
     });
+    
     $('.deleteBtn').click(async function(e) {
         e.preventDefault();
         let result = confirm('Apakah ingin mengapus data ini ? ');
         if (result===true){
             await hapusData($(this).data('id'));
         }
+    })
+    $('.editBtn').click(async function(e) {
+        e.preventDefault();
+        await editData($(this).data('id'));
+    })
+    $('.detailBtn').click(async function(e) {
+        await isiDetailModal($(this).data('id'));
     })
     $('#table').DataTable({
         "lengthMenu" : [[5,10,30,50, -1], [5,10,30,50,"All"]]
@@ -165,5 +297,11 @@ $(document).ready(async function() {
         await submitDataObat();
         $('#tambahModal .cancelBtn').click();
     })
+    $('body').on('submit', '#editForm', async function(e) {
+        e.preventDefault();
+        await updateData($('#submitBtn').data('id'));
+        $('#modal .cancelBtn').click();
+    })
+    
     
 })

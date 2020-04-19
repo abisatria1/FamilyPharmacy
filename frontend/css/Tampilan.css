@@ -40,6 +40,11 @@ body{
   margin: 16px auto;
 }
 
+#modal p {
+  color: rgb(190, 190, 190);
+  margin: 1px 0;
+}
+
 .customBtn {
   padding: 8px 34px;
   border: none;
@@ -67,4 +72,7 @@ body{
   text-align: left;
 }
 
+.tulisanObat {
+  padding: 10px;
+}
 /* end of modal */
