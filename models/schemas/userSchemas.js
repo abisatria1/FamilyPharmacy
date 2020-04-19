@@ -34,10 +34,21 @@ const loginSchema = Joi.object().keys({
     password : Joi.string().min(6).required()
 })
 
+const updateByOwnerSchema = Joi.object().keys({
+    namaUser : Joi.string().min(3).required(),
+    umurUser : Joi.string().required(),
+    alamatUser : Joi.string().required(),
+    notelpUser : Joi.string().required(),
+    emailUser : Joi.string().required(),
+    username : Joi.string().min(3).required(),
+    statusUser : Joi.number().required()
+})
+
 module.exports = {
     userSchema,
     profileSchema,
     accountSchema,
     updatePassSchema,
-    loginSchema
+    loginSchema,
+    updateByOwnerSchema
 }

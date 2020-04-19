@@ -17,7 +17,8 @@ const {
     profileSchema,
     accountSchema,
     updatePassSchema,
-    loginSchema
+    loginSchema,
+    updateByOwnerSchema
 } = require('../models/schemas/userSchemas') 
 
 
@@ -78,5 +79,19 @@ router.route('/search')
         passport.authenticate('jwt',{session:false}),
         validateUser(),
         userController.searchUser
+    )
+
+router.route('/reset/:userId')
+    .patch(
+        passport.authenticate('jwt',{session:false}),
+        validateUser(),
+        userController.resetPassword
+    )
+
+router.route('/update/:userId')
+    .patch(
+        passport.authenticate('jwt',{session:false}),
+        [validateUser() , validateBody(updateByOwnerSchema) , validateUsernameAndEmailOnUpdate()],
+        userController.editUserByOwner
     )
 module.exports = router

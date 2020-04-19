@@ -105,6 +105,30 @@ const searchUser = async(req,res,next) => {
     response(res,'success',user,'All users has been fetched',200)
 }
 
+const resetPassword = async (req,res,next) => {
+    const user = await User.findByPk(req.params.userId)
+    if (!user) return response(res,'fail',null,'User not found',400)
+    const password = hashPassword('123456')
+    user.password = password
+    await user.save()
+    response(res,'success',user,'User password has been reset to 123456',200)
+}
+
+const editUserByOwner = async (req,res,next) => {
+    const {namaUser,umurUser,notelpUser,alamatUser,emailUser,username,statusUser} = req.body
+    const user = await User.findByPk(req.params.userId)
+    if (!user) return response(res,'fail',null,'User not found',400)
+    user.namaUser = namaUser
+    user.umurUser = umurUser
+    user.notelpUser = notelpUser
+    user.alamatUser = alamatUser
+    user.emailUser = emailUser
+    user.username = username
+    user.statusUser = statusUser
+    await user.save()
+    response(res,'success' ,null,'Successfully update user data',200)
+}
+
 
 module.exports = {
     index,
@@ -115,5 +139,7 @@ module.exports = {
     updateAccount,
     updatePassword,
     login,
-    searchUser
+    searchUser,
+    resetPassword,
+    editUserByOwner
 }

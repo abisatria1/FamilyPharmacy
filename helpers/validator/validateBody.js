@@ -21,9 +21,11 @@ const validateUsernameAndEmail = () => {
         const usernameUser = await User.findOne({where : {username}})
         if (email && usernameUser) {
             return response(res,'fail',null,'email and username has been used',400)
-        }else if (email) {
+        }
+        if (email) {
             return response(res,'fail',null,'email has been used',400)
-        }else if (usernameUser) {
+        }
+        if (usernameUser) {
             return response(res,'fail',null,'username has been used',400)
         }
         next()
@@ -36,16 +38,36 @@ const validateUsernameAndEmailOnUpdate = () => {
         const email = await User.findOne({where : {emailUser}})
         const usernameUser = await User.findOne({where : {username}})
         if (email && usernameUser) {
-            if (email.id !== req.user.id && usernameUser.id !== req.user.id){
-                return response(res,'fail',null,'email and username has been used',400)
+            if (req.params.userId) {
+                if (email.id != req.params.userId && usernameUser.id != req.params.userId){
+                    return response(res,'fail',null,'email and username has been used',400)
+                }
+            }else {
+                if (email.id !== req.user.id && usernameUser.id !== req.user.id){
+                    return response(res,'fail',null,'email and username has been used',400)
+                }
             }
-        }else if (email) {
-            if (email.id !== req.user.id){
+        }
+        if (email) {
+            if (req.params.userId) {
+                if (email.id != req.params.userId){
                     return response(res,'fail',null,'email has been used',400)
+                }
+            }else {
+                if (email.id !== req.user.id){
+                    return response(res,'fail',null,'email has been used',400)
+                }
             }
-        }else if (usernameUser) {
-            if (usernameUser.id !== req.user.id){
-                return response(res,'fail',null,'username has been used',400)
+        }
+        if (usernameUser) {
+            if (req.params.userId) {
+                if (usernameUser.id != req.params.userId){
+                    return response(res,'fail',null,'username has been used',400)
+                }
+            }else {
+                if (usernameUser.id !== req.user.id){
+                    return response(res,'fail',null,'username has been used',400)
+                }
             }
         }
         next()
