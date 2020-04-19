@@ -62,56 +62,66 @@
 
   <!-- modal tambah pegawai -->
   <div id="tambahModal">
-    <form>
+    <form id="formTambahPegawai">
       <div class="form-row">
         <div class="col">
-          <label for="inputPegawai">Nama Pegawai</label>
-          <input type="text" class="form-control" id="inputPegawai" placeholder="Nama Pegawai">
+          <label for="namaUser">Nama Pegawai</label>
+          <input type="text" class="form-control" id="namaUser" placeholder="Nama Pegawai" required autocomplete="off">
         </div>
         <div class="col">
-          <label for="inputTelepon">No Telepon</label>
-          <input type="text" class="form-control" id="inputTelepon" placeholder="Masukkan Nomor Telepon">
+          <label for="notelpUser">No Telepon</label>
+          <input type="text" class="form-control" id="notelpUser" placeholder="Masukkan Nomor Telepon" required autocomplete="off">
         </div>
       </div>
       <br>
 
       <div class="form-row">
         <div class="col-md-4">
-          <label for="inputUmur">Umur</label>
-          <input type="text" class="form-control" id="inputUmur" placeholder="Ex. 21">
+          <label for="umurUser">Umur</label>
+          <input type="number" class="form-control" id="umurUser" placeholder="Ex. 21" required autocomplete="off">
         </div>
         <div class="col">
-          <label for="inputEmail">Email</label>
-          <input type="email" class="form-control" id="inputEmail" placeholder="Masukkan Email">
+          <label for="emailUser">Email</label>
+          <input type="email" class="form-control" id="emailUser" placeholder="Masukkan Email" required autocomplete="off">
+        </div>
+        <div class="col-2">
+          <label for="statusUser">Status User</label>
+          <select class="custom-select form-control" id="statusUser" required autocomplete="off">
+            <option selected value="">Choose..</option>
+            <option value="0">pegawai </option>
+            <option value="1">pemilik </option>
+          </select>
         </div>
       </div>
       <br>
 
       <div class="form-row">
         <div class="col-md-6">
-          <label for="inputUsername">Username</label><br>
-          <input type="text" class="form-control" id="inputUsername" placeholder="Masukkan Username">
+          <label for="username">Username</label><br>
+          <input type="text" class="form-control" id="username" placeholder="Masukkan Username" required autocomplete="off">
         </div>
         <div class="col">
-          <label for="inputPassword">Password</label><br>
-          <input type="password" class="form-control" id="inputPassword" placeholder="Masukkan Password">
+          <label for="password">Password</label><br>
+          <input type="password" class="form-control" id="password" placeholder="Masukkan Password">
         </div>
       </div>
       <br>
 
       <div class="form-row">
         <div class="col-md-12">
-          <label for="inputDeskripsi">Alamat</label>
-          <textarea class="form-control" id="inputDeskripsi" rows="3" placeholder="Masukkan Alamat..."></textarea>
+          <label for="alamatUser">Alamat</label>
+          <textarea class="form-control" id="alamatUser" rows="3" placeholder="Masukkan Alamat..."></textarea>
         </div>
 
       </div>
       <br>
-
+      <div class="errorMessage alert alert-danger">
+        <p></p>
+      </div>
       <div class="form-row">
-        <div class="col-md-11"></div>
-        <div class="col-md-1">
-          <button class="btn btn-primary" type="submit" style="background-color: #434055;;">Tambah</button>
+        <div class="col-md" style="text-align : right;">
+          <button class="customBtn successBtn" type="submit" id="tambahPegawaiSubmit">Tambah</button>
+          <button class="customBtn btn-danger" id="tambahPegawaiCancel" data-izimodal-close="#tambahModal">Cancel</button>
         </div>
       </div>
     </form>
@@ -135,9 +145,14 @@
       <div class="container">
         <div class="box">
           <h4 class="text-left mt-5"><b>Data Pegawai</b></h4>
-          <a href="" class="btn btn-dark" data-izimodal-open="#tambahModal" onclick="tambahData()">Tambah Data Pegawai</a>
+          <a href="" class="btn btn-dark" data-izimodal-open="#tambahModal" id="formTambahPegawai">Tambah Data Pegawai</a>
           <br><br>
           <div class="card card-body" style="width: 105rem;">
+            <!-- untuk message -->
+            <div id="message" style="text-align : center;">
+              <p></p>
+            </div>
+            <!-- end of message -->
             <table class="table mt-3" id="table">
               <thead>
                 <tr>
@@ -145,9 +160,10 @@
                   <th class="text-left" scope="col">Nama Pegawai</th>
                   <th class="text-center" scope="col">Umur</th>
                   <th class="text-center" scope="col">No Telepon</th>
+                  <th class="text-center" scope="col">Alamat</th>
                   <th class="text-center" scope="col">Email</th>
                   <th class="text-center" scope="col">Username</th>
-                  <th class="text-center" scope="col">Alamat</th>
+                  <th class="text-center" scope="col">Status</th>
                   <th class="text-center" scope="col" style="width: 180px;">Aksi</th>
                 </tr>
               </thead>
