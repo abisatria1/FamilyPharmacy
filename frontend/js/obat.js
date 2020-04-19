@@ -14,9 +14,9 @@ const isiDataObat = async () => {
                     <td class="text-center hargaObat">${item.hargaObat}</td>
                     <td class="text-center stokObat">${item.stokObat}</td>
                     <td class="text-center">
-                        <a href="#" class="btn badge-success float-center btn-sm" ?>Detail</a>
-                        <a href="" data-izimodal-open="#modal" class="editBtn btn badge-warning float-center btn-sm" onclick="editData(${item.id})"?>Edit</a>
-                        <a href="#" class="btn badge-danger float-center btn-sm" onclick="return confirm('Apakah anda yakin menghapus data ini?');" ?>Hapus</a>
+                        <a href="#" class="btn badge-success float-center btn-sm">Detail</a>
+                        <a href="" data-izimodal-open="#modal" class="editBtn btn badge-warning float-center btn-sm" onclick="editData(${item.id})">Edit</a>
+                        <a href="" data-id = "${item.id}" class="deleteBtn btn badge-danger float-center btn-sm">Hapus</a>
                     </td>
                 </form>
                 </tr>
@@ -81,6 +81,23 @@ const editData = id => {
     });
 }
 
+const hapusData = async(id) => {
+    axios({
+        url : 'http://localhost:3001/drugs/'+id,
+        method : 'DELETE',
+        headers : {
+            'Authorization' : sessionStorage.getItem('token')
+        },
+    })
+    .then(response => {
+        flashMessage(response.data.message,true)
+        window.location = 'Tampilan_obat.html'
+    })
+    .catch(err => {
+        flashMessage(err.response.message,false)
+    })
+}
+
 const submitDataObat = async () => {
     let file = $('input[name="fotoObat"]')[0].files[0]
     let data = new FormData()
@@ -101,22 +118,24 @@ const submitDataObat = async () => {
         data : data
     })
     .then(async response => {
-        alert(response.data.message)
+        flashMessage(response.data.message,true)
         window.location = 'Tampilan_obat.html'
     })
     .catch(err => {
-        alert(err.response.message)
+        flashMessage(err.response.data.message,false)
+        window.location = 'Tampilan_obat.html'
     })
 }
 
 
-$(document).ready(async function(e) {
+$(document).ready(async function() {
     cekLogin();
     await isiDataObat();
+    cekMessage();
     isiNavbar(getUserFromSession().statusUser);
     $(`a[href="home.html"]`).attr('id','');
     $(`a[href="Tampilan_obat.html"]`).attr('id','active');
-    $('#tambahModal').iziModal({
+    let izimodal = $('#tambahModal').iziModal({
         title : 'Tambah Data Obat',
         subtitle : 'Diharapkan mengisi data dengan benar dan bertanggung jawab',
         headerColor : '#434055',
@@ -126,10 +145,25 @@ $(document).ready(async function(e) {
             $('#tambahModal input').val('');
         }
     });
+    $('.deleteBtn').click(async function(e) {
+        e.preventDefault();
+        let result = confirm('Apakah ingin mengapus data ini ? ');
+        if (result===true){
+            await hapusData($(this).data('id'));
+        }
+    })
     $('#table').DataTable({
         "lengthMenu" : [[5,10,30,50, -1], [5,10,30,50,"All"]]
     });
-    $('#tambahModal form #submit').click(async function(e) {
-        await submitDataObat();
+    
+    $('#fotoObat').change(function() {
+        let fileName = $(this)[0].files[0].name;
+        $('.custom-file label').text(fileName)
     })
+    $('#tambahModal form').submit(async function(e) {
+        e.preventDefault();
+        await submitDataObat();
+        $('#tambahModal .cancelBtn').click();
+    })
+    
 })

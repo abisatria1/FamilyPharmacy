@@ -51,3 +51,32 @@ const getUserFromSession = () => {
     const user = JSON.parse(raw);
     return user;
 }
+
+const cekMessage = () => {
+    let raw = sessionStorage.getItem('message');
+    let message = JSON.parse(raw);
+    console.log(message)
+    if (message) {
+        if (message.condition === false) {
+            $('#message').removeClass('alert alert-success')
+            $('#message').removeClass('alert alert-danger')
+            $('#message').addClass('alert alert-danger')
+        }else if (message.condition === true) {
+            $('#message').removeClass('alert alert-success')
+            $('#message').removeClass('alert alert-danger')
+            $('#message').addClass('alert alert-success')
+        }
+        $('#message p').text(message.message)
+        $('#message').slideDown(function() {
+            setTimeout(function() {
+                $('#message').slideUp();
+            }, 5000);
+        });
+        sessionStorage.removeItem('message');
+    }
+}
+
+const flashMessage =  (message,condition) => {
+    let flash  = {message,condition}
+    sessionStorage.setItem('message', JSON.stringify(flash));
+}

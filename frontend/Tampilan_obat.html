@@ -2,27 +2,25 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.1/css/fileinput.min.css" media="all"
-        rel="stylesheet" type="text/css" />
-    <!-- the main fileinput plugin file -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.1/js/fileinput.min.js"></script>
-    <!-- following theme script is needed to use the Font Awesome 5.x theme (`fas`) -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.1/themes/fas/theme.min.js"></script>
-    <!-- optionally if you need translation for your language then include the locale file as mentioned below (replace LANG.js with your language locale) -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.1/js/locales/LANG.js"></script>
 
     <!-- axios -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    
+
+    <!-- izimodal -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/izimodal/1.5.1/js/iziModal.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izimodal/1.5.1/css/iziModal.css">
+
+    <!-- file input -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script> 
+
     <!-- custom css -->
     <link rel="stylesheet" href="css/tampilan.css">
     <link rel="stylesheet" href="css/navbar.css">
@@ -30,11 +28,7 @@
     <!-- custom js -->
     <script src="js/function.js"></script>
     <script src="js/obat.js"></script>
-
-    <!-- izimodal -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/izimodal/1.5.1/js/iziModal.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izimodal/1.5.1/css/iziModal.css">
-    <title></title>
+    <title>Data Obat</title>
   </head>
   <body>
 
@@ -68,11 +62,11 @@
         <div class="form-row">
             <div class="col">
                 <label for="inputNama">Nama Obat</label>
-                <input type="text" class="form-control" id="inputNama" placeholder="Nama Obat" name="namaObat">
+                <input type="text" class="form-control" id="inputNama" required placeholder="Nama Obat" name="namaObat">
             </div>
             <div class="col">
                 <label for="inputNama">Jenis Obat</label>
-                <input type="text" class="form-control" id="inputJenis" placeholder="Jenis Obat" name="jenisObat">
+                <input type="text" class="form-control" id="inputJenis" required placeholder="Jenis Obat" name="jenisObat">
             </div>
         </div>
         <br>
@@ -80,12 +74,12 @@
         <div class="form-row">
             <div class="col-md-4">
                 <label for="inputStock">Stock</label>
-                <input type="number" class="form-control" id="inputStock" placeholder="Ex. 100" name="stokObat">
+                <input type="number" class="form-control" id="inputStock" required placeholder="Ex. 100" name="stokObat">
             </div>
             <div class="col">
                 <label for="inputProdusen">Produsen</label>
                 <input type="text" class="form-control" id="inputProdusen"
-                    placeholder="Nama Produsen" name="produsenObat">
+                    required placeholder="Nama Produsen" name="produsenObat">
             </div>
         </div>
         <br>
@@ -95,15 +89,17 @@
                 <label for="inputHarga">Harga</label><br>
                 <label for="inputHarga" class="col-sm-3 col-form-label">Rp </label>
                 <div class="col-sm-9">
-                    <input type="number" class="form-control" id="inputHarga" placeholder="Ex. 10000"
+                    <input type="number" class="form-control" id="inputHarga" required placeholder="Ex. 10000"
                         style="margin-left: -25px;" name='hargaObat'>
                 </div>
 
             </div>
-            <div class="col">
+            <div class="col-md">
                 <label for="inputGambar">Gambar</label>
-                <!-- <input type="file" name="fotoObat" required> -->
-                <input id="fotoObat" name="fotoObat" type="file" class="file" data-show-preview="false" data-show-upload="false">
+                <div class="custom-file">
+                  <input type="file" required class="custom-file-input" id="fotoObat" name="fotoObat">
+                  <label class="custom-file-label" for="fotoObat">Pilih File...</label>
+                </div>
             </div>
         </div>
         <br>
@@ -111,7 +107,7 @@
         <div class="form-row">
             <div class="col-md-12">
                 <label for="inputDeskripsi">Deskripsi</label>
-                <textarea class="form-control" id="inputDeskripsi" rows="3" name="descObat" placeholder="Masukkan deskripsi..."></textarea>
+                <textarea class="form-control" id="inputDeskripsi" rows="3" name="descObat" required placeholder="Masukkan deskripsi..."></textarea>
             </div>
 
         </div>
@@ -119,8 +115,8 @@
 
         <div class="form-row">
             <div class="col-md-12 button">
-                <button id="submit" class="customBtn successBtn" data-izimodal-close="#tambahModal">Submit</button>
-                <button class="customBtn btn-danger" data-izimodal-close="#tambahModal">Cancel</button>
+                <button type = "submit"id="submit" class="customBtn successBtn">Submit</button>
+                <button class="customBtn btn-danger cancelBtn" data-izimodal-close="#tambahModal">Cancel</button>
             </div>
         </div>
       </div>
@@ -147,7 +143,13 @@
                 <h4 class="text-left mt-5"><b>Data Obat</b></h4>
                 <a href="" class="btn btn-dark" data-izimodal-open="#tambahModal">Tambah Data Obat</a>
                 <br><br>
+
                 <div class="card card-body" style="width: 105rem;" >
+                  <!-- untuk message -->
+                  <div id="message" style="text-align : center;">
+                    <p></p>
+                  </div>
+                  <!-- end of message -->
                   <table class="table mt-3" id="table">
                     <thead>
                       <tr>
