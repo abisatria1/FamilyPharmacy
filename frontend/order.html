@@ -1,118 +1,219 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
 
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <!-- axios -->
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
-    <link rel="stylesheet" href="./css/order.css">
-    <title>Order Obat</title>
+  <!-- custom css -->
+  <link rel="stylesheet" href="css/order.css">
+  <link rel="stylesheet" href="css/navbar.css">
+
+
+  <!-- izimodal -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/izimodal/1.5.1/js/iziModal.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izimodal/1.5.1/css/iziModal.css">
+
+  <title></title>
 </head>
 
 <body>
- <!-- nabar -->
- <nav class="navbar navbar-expand-lg navbar-light">
+  <!-- nabar -->
+  <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
-        <a class="navbar-brand" href="home.html"><img src="img/logoKuning.svg" alt="Logo.png">Familiy Pharmacy</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav ml-auto">
-                <!-- isi navbar -->
+      <a class="navbar-header" href="home.html"><img src="img/logoKuning.svg" alt="Logo.png">Familiy Pharmacy</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav navbar-right">
+          <!-- isi navbar -->
+        </div>
+      </div>
+    </div>
+  </nav>
+  <!-- akhir navbar -->
+
+  <!-- vektor -->
+  <div class="background">
+      <div class="vektor4">
+          <img src="img/Vector4.png" alt="">
+      </div>
+      <div class="vektor5 text-right">
+          <img src="img/Vector5.png" alt="">
+      </div>
+  </div>
+  <!-- akhir vektor -->
+  <!-- awal card -->
+  <div class="container kotak">
+    <div class="card shadow-sm p-3 mb-5 bg-white rounded">
+      <div class="container">
+        <div class="box">
+          <div class="judul">
+              <h3 class="text-left mt-5"><b>Order Obat</b></h3>
+          </div>
+          <div class="card card-body" style="width: 105rem;">
+            <!-- untuk message -->
+            <div id="message" style="text-align : center;">
+                <p></p>
             </div>
+            <!-- end of message -->
+
+            <div class="row">
+              <div class="col kiri">
+    
+                <div class="row">
+                  <div class="col">
+                    <h5><b>Cari Data Obat</b></h5>
+                    <form action="" id="searchForm">
+                      <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Masukan data obat" id="searchObat">
+                      </div>
+                      <div class="searchResult form-group">
+                        <div class="searchItem row">
+                          <div class="col-sm-2">
+                            <img src="http://localhost:3001/uploads/1587293525006chloroquine.jpg">
+                          </div>
+                          <div class="col-sm-8">
+                            <h5>Nama Obat</h5>
+                            <h5><b>Rp.100000</b></p>
+                          </div>  
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+
+              </div>
+              <div class="col kanan">
+                <h5><b>Obat Yang Dipilih</b></h5>
+                <div class="row">  
+                  <div class="col" style=" height: 319px; overflow-y: auto;">
+                    <div class="itemPilih row">
+                      <div class="col-sm-2">
+                        <img src="http://localhost:3001/uploads/1587293525006chloroquine.jpg">
+                      </div>
+                      <div class="col-sm-6">
+                        <h5>Nama Obat</h5>
+                        <h5> <b>Rp.</b> <b class="hargaObat">100000</b></p>
+                      </div>  
+                      <div class="col-sm-2">
+                        <input type="number" min="1" max ="10" class="form-control quantity" value="1">
+                      </div>  
+                      <div class="col-sm-2" style="display: flex;justify-content: flex-end;">
+                        <button class="deleteBtn">+</button>
+                      </div>  
+                    </div>
+                    <div class="itemPilih row">
+                      <div class="col-sm-2">
+                        <img src="http://localhost:3001/uploads/1587293525006chloroquine.jpg">
+                      </div>
+                      <div class="col-sm-6">
+                        <h5>Nama Obat</h5>
+                        <h5> <b>Rp.</b> <b class="hargaObat">100000</b></p>
+                      </div>  
+                      <div class="col-sm-2">
+                        <input type="number" min="1" max ="10" class="form-control quantity" value="1">
+                      </div>  
+                      <div class="col-sm-2" style="display: flex;justify-content: flex-end;">
+                        <button class="deleteBtn">+</button>
+                      </div>  
+                    </div>
+                    <div class="itemPilih row">
+                      <div class="col-sm-2">
+                        <img src="http://localhost:3001/uploads/1587293525006chloroquine.jpg">
+                      </div>
+                      <div class="col-sm-6">
+                        <h5>Nama Obat</h5>
+                        <h5> <b>Rp.</b> <b class="hargaObat">100000</b></p>
+                      </div>  
+                      <div class="col-sm-2">
+                        <input type="number" min="1" max ="10" class="form-control quantity" value="1">
+                      </div>  
+                      <div class="col-sm-2" style="display: flex;justify-content: flex-end;">
+                        <button class="deleteBtn">+</button>
+                      </div>  
+                    </div>
+                    <div class="itemPilih row">
+                      <div class="col-sm-2">
+                        <img src="http://localhost:3001/uploads/1587293525006chloroquine.jpg">
+                      </div>
+                      <div class="col-sm-6">
+                        <h5>Nama Obat</h5>
+                        <h5> <b>Rp.</b> <b class="hargaObat">100000</b></p>
+                      </div>  
+                      <div class="col-sm-2">
+                        <input type="number" min="1" max ="10" class="form-control quantity" value="1">
+                      </div>  
+                      <div class="col-sm-2" style="display: flex;justify-content: flex-end;">
+                        <button class="deleteBtn">+</button>
+                      </div>  
+                    </div>
+                    <div class="itemPilih row">
+                      <div class="col-sm-2">
+                        <img src="http://localhost:3001/uploads/1587293525006chloroquine.jpg">
+                      </div>
+                      <div class="col-sm-6">
+                        <h5>Nama Obat</h5>
+                        <h5> <b>Rp.</b> <b class="hargaObat">100000</b></p>
+                      </div>  
+                      <div class="col-sm-2">
+                        <input type="number" min="1" max ="10" class="form-control quantity" value="1">
+                      </div>  
+                      <div class="col-sm-2" style="display: flex;justify-content: flex-end;">
+                        <button class="deleteBtn">+</button>
+                      </div>  
+                    </div>
+                    <div class="itemPilih row">
+                      <div class="col-sm-2">
+                        <img src="http://localhost:3001/uploads/1587293525006chloroquine.jpg">
+                      </div>
+                      <div class="col-sm-6">
+                        <h5>Nama Obat</h5>
+                        <h5> <b>Rp.</b> <b class="hargaObat">100000</b></p>
+                      </div>  
+                      <div class="col-sm-2">
+                        <input type="number" min="1" max ="10" class="form-control quantity" value="1">
+                      </div>  
+                      <div class="col-sm-2" style="display: flex;justify-content: flex-end;">
+                        <button class="deleteBtn">+</button>
+                      </div>  
+                    </div>
+                  </div>
+                </div>
+                <div class="row conclusion">
+                  <div class="col">
+                    <div class="row-sm">
+                      <div class="col-sm">
+                        <span id="total">Total : <b>Rp </b><b id="totalAmount">200000</b></span>
+                        <span>
+                          <button class="customBtn successBtn">Order</button>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
-</nav>
-<!-- akhir navbar -->
-
-    <div class="head-container">
-        <div id="rec">
-            <img src="./img/rec.png" alt="">
-        </div>
-        <div id="vec1">
-            <img src="./img/vec1.png" alt="">
-        </div>
-        <div id="vec2">
-            <img src="./img/vec2.png" alt="">
-        </div>
-    </div>
-
-    <div class="content">
-        <div class="head-txt">
-            <h3>Order Obat</h3>
-        </div>
-        <div class="line"></div>
-        <div class="txt-line">Masukkan id/nama obat</div>
-
-        <form class="form-inline my-2 my-lg-0" action="">
-            <input class="form-control form mr-sm-2" type="search" placeholder="ID/Nama Obat">
-            <button type="submit" class="btn btn-primary order">Order</button>
-        </form>
-
-        <div class="pic">
-            <img src="./img/default.png" alt="">
-        </div>
-        <div class="name-pic">
-            <p>
-                <b>Nama Obat &nbsp; &nbsp; &nbsp; &nbsp;: </b>&nbsp; <span>Paracetamol</span>
-            </p>
-            <p>
-                <b>Jenis &nbsp; &nbsp; &nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
-                </b>
-            </p>
-            <p>
-                <b>Produsen &nbsp; &nbsp; &nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
-                </b>
-            </p>
-            <p>
-                <b>Harga&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp:
-                </b>
-            </p>
-            <p>
-                <b>Stok&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
-                </b>
-            </p>
-        </div>
-        <div class="desc">
-            <h3>Deskripsi</h3>
-        </div>
-        <div class="dsc-txt">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                ut labore et dolore magna aliqua. Nisl pretium fusce id velit ut. Eget aliquet nibh praesent
-                tristique magna sit. Adipiscing diam donec adipiscing tristique risus nec. Vitae turpis massa
-                sed elementum tempus. Consectetur purus ut faucibus pulvinar elementum integer enim neque. Mauris
-                in aliquam sem fringilla ut morbi tincidunt augue. Curabitur gravida arcu ac tortor dignissim convallis
-                aenean et. Pellentesque eu tincidunt tortor aliquam nulla facilisi cras fermentum odio. Quam lacus
-                suspendisse
-                faucibus interdum posuere lorem. Turpis nunc eget lorem dolor sed viverra ipsum nunc aliquet.</p>
-        </div>
-        <div class="jml">
-            <h3>Jumlah</h3>
-        </div>
-
-    </div>
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script>
+  </div>
+  <!-- akhir card -->
 </body>
 
 </html>
+
+<!-- custom js -->
+<script src="js/function.js"></script>
+<script src="js/order.js"></script>
