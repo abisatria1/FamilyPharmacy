@@ -52,6 +52,23 @@ const getUserFromSession = () => {
     return user;
 }
 
+const getUserFromRequest = async token => {
+    try {
+        const response = await axios({
+            url: 'http://localhost:3001/users/profile',
+            method: 'get',
+            headers: {
+                'Authorization': token
+            }
+        })
+        return response.data.data
+    } catch (err) {
+        console.log(err.response)
+        alert('asd')
+    }
+    
+}
+
 const cekMessage = () => {
     let raw = sessionStorage.getItem('message');
     let message = JSON.parse(raw);

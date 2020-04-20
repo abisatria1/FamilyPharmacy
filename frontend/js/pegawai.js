@@ -177,6 +177,10 @@ const updatePegawai = async (id) => {
         const response = await requestUpdatePegawai(sessionStorage.getItem('token'),id,data)
         flashMessage(response.data.message,true)
         $('#modal .btn-danger').click()
+        if(id == getUserFromSession().id) {
+            let user = await getUserFromRequest(sessionStorage.getItem('token'))
+            sessionStorage.setItem('user' , JSON.stringify(user))
+        }
         window.location = 'tampilan_pegawai.html'
     } catch (err) {
         console.log(err.response)
