@@ -62,7 +62,7 @@
 
   <!-- modal tambah pegawai -->
   <div id="tambahModal">
-    <form>
+    <form enctype="multipart/form-data">
       <div class="form-row">
         <div class="col">
           <label for="inputPegawai">Nama Pegawai</label>
@@ -109,9 +109,9 @@
       <br>
 
       <div class="form-row">
-        <div class="col-md-11"></div>
-        <div class="col-md-1">
-          <button class="btn btn-primary" type="submit" style="background-color: #434055;;">Tambah</button>
+        <div class="col-md-12 button">
+          <button class="btn btn-primary customBtn successBtn" type="submit" style="background-color: #434055;;">Tambah</button>
+          <button class="customBtn btn-danger cancelBtn" data-izimodal-close="#tambahModal">Cancel</button>
         </div>
       </div>
     </form>
