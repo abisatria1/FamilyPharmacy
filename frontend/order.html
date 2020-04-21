@@ -75,18 +75,10 @@
                     <h5><b>Cari Data Obat</b></h5>
                     <form action="" id="searchForm">
                       <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Masukan data obat" id="searchObat">
+                        <input type="text" class="form-control" placeholder="Masukan data obat" onkeyup="cariObat(this.value)" id="searchObat">
                       </div>
                       <div class="searchResult form-group">
-                        <div class="searchItem row">
-                          <div class="col-sm-2">
-                            <img src="http://localhost:3001/uploads/1587293525006chloroquine.jpg">
-                          </div>
-                          <div class="col-sm-8">
-                            <h5>Nama Obat</h5>
-                            <h5><b>Rp.100000</b></p>
-                          </div>  
-                        </div>
+                        <!-- search result -->
                       </div>
                     </form>
                   </div>
@@ -96,97 +88,8 @@
               <div class="col kanan">
                 <h5><b>Obat Yang Dipilih</b></h5>
                 <div class="row">  
-                  <div class="col" style=" height: 319px; overflow-y: auto;">
-                    <div class="itemPilih row">
-                      <div class="col-sm-2">
-                        <img src="http://localhost:3001/uploads/1587293525006chloroquine.jpg">
-                      </div>
-                      <div class="col-sm-6">
-                        <h5>Nama Obat</h5>
-                        <h5> <b>Rp.</b> <b class="hargaObat">100000</b></p>
-                      </div>  
-                      <div class="col-sm-2">
-                        <input type="number" min="1" max ="10" class="form-control quantity" value="1">
-                      </div>  
-                      <div class="col-sm-2" style="display: flex;justify-content: flex-end;">
-                        <button class="deleteBtn">+</button>
-                      </div>  
-                    </div>
-                    <div class="itemPilih row">
-                      <div class="col-sm-2">
-                        <img src="http://localhost:3001/uploads/1587293525006chloroquine.jpg">
-                      </div>
-                      <div class="col-sm-6">
-                        <h5>Nama Obat</h5>
-                        <h5> <b>Rp.</b> <b class="hargaObat">100000</b></p>
-                      </div>  
-                      <div class="col-sm-2">
-                        <input type="number" min="1" max ="10" class="form-control quantity" value="1">
-                      </div>  
-                      <div class="col-sm-2" style="display: flex;justify-content: flex-end;">
-                        <button class="deleteBtn">+</button>
-                      </div>  
-                    </div>
-                    <div class="itemPilih row">
-                      <div class="col-sm-2">
-                        <img src="http://localhost:3001/uploads/1587293525006chloroquine.jpg">
-                      </div>
-                      <div class="col-sm-6">
-                        <h5>Nama Obat</h5>
-                        <h5> <b>Rp.</b> <b class="hargaObat">100000</b></p>
-                      </div>  
-                      <div class="col-sm-2">
-                        <input type="number" min="1" max ="10" class="form-control quantity" value="1">
-                      </div>  
-                      <div class="col-sm-2" style="display: flex;justify-content: flex-end;">
-                        <button class="deleteBtn">+</button>
-                      </div>  
-                    </div>
-                    <div class="itemPilih row">
-                      <div class="col-sm-2">
-                        <img src="http://localhost:3001/uploads/1587293525006chloroquine.jpg">
-                      </div>
-                      <div class="col-sm-6">
-                        <h5>Nama Obat</h5>
-                        <h5> <b>Rp.</b> <b class="hargaObat">100000</b></p>
-                      </div>  
-                      <div class="col-sm-2">
-                        <input type="number" min="1" max ="10" class="form-control quantity" value="1">
-                      </div>  
-                      <div class="col-sm-2" style="display: flex;justify-content: flex-end;">
-                        <button class="deleteBtn">+</button>
-                      </div>  
-                    </div>
-                    <div class="itemPilih row">
-                      <div class="col-sm-2">
-                        <img src="http://localhost:3001/uploads/1587293525006chloroquine.jpg">
-                      </div>
-                      <div class="col-sm-6">
-                        <h5>Nama Obat</h5>
-                        <h5> <b>Rp.</b> <b class="hargaObat">100000</b></p>
-                      </div>  
-                      <div class="col-sm-2">
-                        <input type="number" min="1" max ="10" class="form-control quantity" value="1">
-                      </div>  
-                      <div class="col-sm-2" style="display: flex;justify-content: flex-end;">
-                        <button class="deleteBtn">+</button>
-                      </div>  
-                    </div>
-                    <div class="itemPilih row">
-                      <div class="col-sm-2">
-                        <img src="http://localhost:3001/uploads/1587293525006chloroquine.jpg">
-                      </div>
-                      <div class="col-sm-6">
-                        <h5>Nama Obat</h5>
-                        <h5> <b>Rp.</b> <b class="hargaObat">100000</b></p>
-                      </div>  
-                      <div class="col-sm-2">
-                        <input type="number" min="1" max ="10" class="form-control quantity" value="1">
-                      </div>  
-                      <div class="col-sm-2" style="display: flex;justify-content: flex-end;">
-                        <button class="deleteBtn">+</button>
-                      </div>  
-                    </div>
+                  <div class="col pilihObat" style=" height: 319px; overflow-y: auto;">
+                    
                   </div>
                 </div>
                 <div class="row conclusion">
