@@ -24,7 +24,7 @@
 
   <!-- custom js -->
   <script src="js/function.js"></script>
-  <script src="js/pegawai.js"></script>
+  <script src="js/jadwal.js"></script>
 
 
   <!-- izimodal -->
@@ -60,68 +60,45 @@
   </div>
   <!-- end of modal -->
 
-  <!-- modal tambah pegawai -->
+  <!-- modal tambah jadwal -->
   <div id="tambahModal">
-    <form id="formTambahPegawai">
+    <form id="formTambahJadwal">
       <div class="form-row">
         <div class="col">
           <label for="namaUser">Nama Pegawai</label>
-          <input type="text" class="form-control" id="namaUser" placeholder="Nama Pegawai" required autocomplete="off">
-        </div>
-        <div class="col">
-          <label for="notelpUser">No Telepon</label>
-          <input type="text" class="form-control" id="notelpUser" placeholder="Masukkan Nomor Telepon" required autocomplete="off">
+          <select class="custom-select form-control" id="listUser" required autocomplete="off">
+            <option selected value="">Choose..</option>
+            <option value=""> </option>
+            <option value=""> </option>
         </div>
       </div>
       <br>
 
       <div class="form-row">
         <div class="col-md-4">
-          <label for="umurUser">Umur</label>
-          <input type="number" class="form-control" id="umurUser" placeholder="Ex. 21" required autocomplete="off">
+          <label for="hari">Hari</label>
+          <input type="text" class="form-control" id="hari" placeholder="Masukkan Hari" required autocomplete="off">
         </div>
-        <div class="col">
-          <label for="emailUser">Email</label>
-          <input type="email" class="form-control" id="emailUser" placeholder="Masukkan Email" required autocomplete="off">
+        <div class="col-md-4">
+          <label for="jamMasuk">Jam Masuk</label>
+          <input type="number" class="form-control" id="jamMasuk" placeholder="Ex. 07:00" required autocomplete="off">
         </div>
-        <div class="col-2">
-          <label for="statusUser">Status User</label>
-          <select class="custom-select form-control" id="statusUser" required autocomplete="off">
-            <option selected value="">Choose..</option>
-            <option value="0">pegawai </option>
-            <option value="1">pemilik </option>
-          </select>
+        <div class="col-md-4">
+          <label for="jamKeluar">Jam Keluar</label>
+          <input type="number" class="form-control" id="jamKeluar" placeholder="Ex. 21:00" required autocomplete="off">
         </div>
       </div>
       <br>
 
-      <div class="form-row">
-        <div class="col-md-6">
-          <label for="username">Username</label><br>
-          <input type="text" class="form-control" id="username" placeholder="Masukkan Username" required autocomplete="off">
-        </div>
-        <div class="col">
-          <label for="password">Password</label><br>
-          <input type="password" class="form-control" id="password" placeholder="Masukkan Password">
-        </div>
-      </div>
-      <br>
-
-      <div class="form-row">
-        <div class="col-md-12">
-          <label for="alamatUser">Alamat</label>
-          <textarea class="form-control" id="alamatUser" rows="3" placeholder="Masukkan Alamat..."></textarea>
-        </div>
-
-      </div>
       <br>
       <div class="errorMessage alert alert-danger">
         <p></p>
       </div>
       <div class="form-row">
         <div class="col-md" style="text-align : right;">
-          <button class="customBtn successBtn" type="submit" id="tambahPegawaiSubmit">Tambah</button>
-          <button class="customBtn btn-danger" id="tambahPegawaiCancel" data-izimodal-close="#tambahModal">Cancel</button>
+          <button class="customBtn successBtn" type="submit" id="tambahJadwalSubmit">Tambah</button>
+          <button class="customBtn btn-danger" id="tambahJadwalCancel"
+            data-izimodal-close="#tambahModal">Cancel</button>
         </div>
       </div>
     </form>
@@ -144,8 +121,9 @@
     <div class="card shadow-sm p-3 mb-5 bg-white rounded">
       <div class="container">
         <div class="box">
-          <h4 class="text-left mt-5"><b>Data Pegawai</b></h4>
-          <a href="" class="btn btn-dark" data-izimodal-open="#tambahModal" id="formTambahPegawai">Tambah Data Pegawai</a>
+          <h4 class="text-left mt-5"><b>Jadwal Pegawai</b></h4>
+          <a href="" class="btn btn-dark" data-izimodal-open="#tambahModal" id="formJadwalPegawai">Tambah Jadwal
+            Pegawai</a>
           <br><br>
           <div class="card card-body" style="width: 105rem;">
             <!-- untuk message -->
@@ -158,12 +136,9 @@
                 <tr>
                   <th class="text-center" scope="col">No.</th>
                   <th class="text-left" scope="col">Nama Pegawai</th>
-                  <th class="text-center" scope="col">Umur</th>
-                  <th class="text-center" scope="col">No Telepon</th>
-                  <th class="text-center" scope="col">Alamat</th>
-                  <th class="text-center" scope="col">Email</th>
-                  <th class="text-center" scope="col">Username</th>
-                  <th class="text-center" scope="col">Status</th>
+                  <th class="text-center" scope="col">Hari</th>
+                  <th class="text-center" scope="col">Jam Masuk</th>
+                  <th class="text-center" scope="col">Jam Keluar</th>
                   <th class="text-center" scope="col" style="width: 180px;">Aksi</th>
                 </tr>
               </thead>

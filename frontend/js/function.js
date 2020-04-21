@@ -20,7 +20,7 @@ const isiNavbar = statusUser => {
             </a>
             <div class="dropdown-menu rounded" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="tampilan_pegawai.html"><p class="text-dark">Lihat Pegawai</p></a>
-            <a class="dropdown-item" href="#"><p class="text-dark">Jadwal Pegawai</p></a>
+            <a class="dropdown-item" href="jadwal_pegawai.html"><p class="text-dark">Jadwal Pegawai</p></a>
         </div>
        </li>
 
@@ -50,6 +50,23 @@ const getUserFromSession = () => {
     const raw = sessionStorage.getItem('user');
     const user = JSON.parse(raw);
     return user;
+}
+
+const getUserFromRequest = async token => {
+    try {
+        const response = await axios({
+            url: 'http://localhost:3001/users/profile',
+            method: 'get',
+            headers: {
+                'Authorization': token
+            }
+        })
+        return response.data.data
+    } catch (err) {
+        console.log(err.response)
+        alert('asd')
+    }
+    
 }
 
 const cekMessage = () => {
