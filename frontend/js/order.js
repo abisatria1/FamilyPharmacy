@@ -64,7 +64,7 @@ const pilihItem = async id => {
           <h5>Stok <b>${item.stokObat}</b></h5>
         </div>  
         <div class="col-sm-2">
-          <input type="number" min="1" max ="10" class="form-control quantity" value="1">
+          <input type="number" min="1" max ="${item.stokObat}" class="form-control quantity" value="1">
         </div>  
         <div class="col-sm-2" style="display: flex;justify-content: flex-end;">
           <button class="deleteBtn">+</button>
