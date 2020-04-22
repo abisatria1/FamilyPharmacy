@@ -25,6 +25,7 @@ const isiNavbar = statusUser => {
        </li>
 
         <a class="nav-item nav-link" href="order.html">Order</a>
+        <a class="nav-item nav-link" href="tampilan_laporan.html">Laporan</a>
         <a class="nav-item nav-link" href="Tampilan_obat.html">Obat</a>
         <a class="nav-item nav-link" href="#">Akun Saya</a>
         <a class="nav-item nav-link" href="login.html">Log Out</a>

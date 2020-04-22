@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+
+    <!-- axios -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <!-- custom css -->
+    <link rel="stylesheet" href="css/laporan.css">
+    <link rel="stylesheet" href="css/navbar.css">
+
+    <!-- datePicker -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"/>
+
+    <!-- custom js -->
+    <script src="js/function.js"></script>
+    <script src="js/laporan.js"></script>
+    <title>Laporan</title>
+    </head> 
+<body>
+  <!-- nabar -->
+  <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container">
+          <a class="navbar-header" href="home.html"><img src="img/logoKuning.svg" alt="Logo.png">Familiy Pharmacy</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div class="navbar-nav navbar-right">
+                  <!-- isi navbar -->
+              </div>
+          </div>
+      </div>
+  </nav>
+  <!-- akhir navbar -->
+
+
+    <!-- vektor -->
+    <div class="background">
+      <div class="vektor4">
+        <img src="img/Vector4.png" alt="">
+      </div>
+      <div class="vektor5 text-right">
+        <img src="img/Vector5.png" alt="">
+      </div>
+    </div>
+    <!-- akhir vektor -->
+    <!-- awal card -->
+    <div class="container kotak">
+        <div class="card shadow-sm p-3 mb-5 bg-white rounded">
+            <div class="container">
+              <div class="box">
+                <h4 class="text-left mt-5"><b>Laporan Order </b></h4>
+                
+                <form action="" id="dateForm">
+                  <label for="date">Masukan Tanggal</label>
+                  <input type="text" class="form-control" id="date" />
+                </form>
+
+                <div class="card card-body" style="width: 105rem;" >
+                  <!-- untuk message -->
+                  <div id="message" style="text-align : center;">
+                    <p></p>
+                  </div>
+                  <!-- end of message -->
+                  <table class="table mt-3" id="table">
+                    <thead>
+                      <tr>
+                        <th class="text-center">No</th>
+                        <th class="text-center" scope="col">Tanggal</th>
+                        <th class="text-center" scope="col">Order Id</th>
+                        <th class="text-center" scope="col">Daftar Obat</th>
+                        <th class="text-center" scope="col">Total Harga</th>
+                        <th class="text-center" scope="col">Total Quantity</th>
+                        <th class="text-center" scope="col">User</th>
+                      </tr>
+                    </thead>
+                    <tbody style="text-align: center;">
+                      
+                    </tbody>
+                    <tfoot>
+                      <tr>
+                        <th colspan="7" style="text-align:right">Total:</th>
+                      </tr>
+                    </tfoot>
+                  </table>
+                </div>
+            </div>
+    <!-- akhir card -->
+  </body>
+</html>
