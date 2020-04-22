@@ -63,17 +63,16 @@
   <!-- modal tambah jadwal -->
   <div id="tambahModal">
     <form id="formTambahJadwal">
+
       <div class="form-row">
-        <div class="col">
+        <div class="col-md-12">
           <label for="namaUser">Nama Pegawai</label>
           <select class="custom-select form-control" id="listUser" required autocomplete="off">
             <option selected value="">Choose..</option>
-            <option value=""> </option>
-            <option value=""> </option>
+          </select>
         </div>
       </div>
       <br>
-
       <div class="form-row">
         <div class="col-md-4">
           <label for="hari">Hari</label>
@@ -81,11 +80,11 @@
         </div>
         <div class="col-md-4">
           <label for="jamMasuk">Jam Masuk</label>
-          <input type="number" class="form-control" id="jamMasuk" placeholder="Ex. 07:00" required autocomplete="off">
+          <input type="time" class="form-control" id="jamMasuk" placeholder="Ex. 07:00" required autocomplete="off">
         </div>
         <div class="col-md-4">
           <label for="jamKeluar">Jam Keluar</label>
-          <input type="number" class="form-control" id="jamKeluar" placeholder="Ex. 21:00" required autocomplete="off">
+          <input type="time" class="form-control" id="jamKeluar" placeholder="Ex. 21:00" required autocomplete="off">
         </div>
       </div>
       <br>
@@ -143,7 +142,7 @@
                 </tr>
               </thead>
               <tbody>
-
+                
               </tbody>
             </table>
           </div>
