@@ -8,7 +8,7 @@ router.route('/')
     .get(drugController.index)
     .post(upload.single('fotoObat') ,validateBody(drugSchema),drugController.createDrug)
 
-router.route('/search').get(drugController.searchDrug)
+router.route('/search').post(drugController.searchDrug)
 
 router.route('/:drugId')
     .get(drugController.viewDrugDetail)

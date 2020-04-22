@@ -8,5 +8,5 @@ router.route('/')
     .post([validateBody(orderSchema),validateStok()],orderController.newOrder)
 
 router.route('/search')
-    .get([validateUser(),validateBody(searchOrderSchema),validateTanggal()],orderController.searchOrder)
+    .post([validateUser(),validateBody(searchOrderSchema),validateTanggal()],orderController.searchOrder)
 module.exports = router
