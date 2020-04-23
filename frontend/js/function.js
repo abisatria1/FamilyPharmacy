@@ -7,7 +7,7 @@ const isiNavbar = statusUser => {
             <a class="nav-item nav-link" href="home.html" id ="active">Beranda</a>
             <a class="nav-item nav-link" href="order.html">Order</a>
             <a class="nav-item nav-link" href="Tampilan_obat.html">Obat</a>
-            <a class="nav-item nav-link" href="#">Akun Saya</a>
+            <a class="nav-item nav-link" href="akun.html">Akun Saya</a>
             <a class="nav-item nav-link" href="login.html">Log Out</a>
         `   
     }else if (statusUser =="1") {
@@ -27,7 +27,7 @@ const isiNavbar = statusUser => {
         <a class="nav-item nav-link" href="order.html">Order</a>
         <a class="nav-item nav-link" href="tampilan_laporan.html">Laporan</a>
         <a class="nav-item nav-link" href="Tampilan_obat.html">Obat</a>
-        <a class="nav-item nav-link" href="#">Akun Saya</a>
+        <a class="nav-item nav-link" href="akun.html">Akun Saya</a>
         <a class="nav-item nav-link" href="login.html">Log Out</a>
         `
     }
