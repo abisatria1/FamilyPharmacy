@@ -98,3 +98,5 @@ const flashMessage =  (message,condition) => {
     let flash  = {message,condition}
     sessionStorage.setItem('message', JSON.stringify(flash));
 }
+
+const baseUrl = 'http://localhost:3001'
