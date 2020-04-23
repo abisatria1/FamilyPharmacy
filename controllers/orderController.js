@@ -39,17 +39,18 @@ const newOrder = async(req,res,next) => {
     while (i < transaksi.length) {
         // cari obat dengan id = id
         let drug = await Drug.findByPk(transaksi[i].id)
+        let qty = parseInt(transaksi[i].quantity)
         // kurangi stok obat dengan quantity yang dibeli
-        drug.stokObat = drug.stokObat - transaksi[i].quantity
+        drug.stokObat = drug.stokObat - qty
         // isi harga dengan rumus banyak quantity barang * harga pokok
-        let harga = drug.hargaObat * transaksi[i].quantity
+        let harga = drug.hargaObat * qty
         // insert ke database
-        let result = await order.addDrug(transaksi[i].id, {through : {quantity : transaksi[i].quantity,harga}})
+        let result = await order.addDrug(transaksi[i].id, {through : {quantity : qty,harga}})
         await drug.save()
         // isi data untuk pesan , totalharga dan totalQuantity
         dataHasBeenInsert.push(result[0])
         totalHarga = totalHarga + harga
-        totalQuantity = totalQuantity + transaksi[i].quantity
+        totalQuantity = totalQuantity + qty
         i++
     }
     order.totalHarga = totalHarga
