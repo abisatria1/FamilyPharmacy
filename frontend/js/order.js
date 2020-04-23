@@ -118,6 +118,7 @@ const insertOrder = async () => {
     transaksi.push(item)
   })
   const data = {transaksi : transaksi}
+  console.log(data)
   try {
     const response = await requestInsertOrder(data)
     resetAll()

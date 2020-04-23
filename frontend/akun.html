@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izimodal/1.5.1/css/iziModal.css">
+  <!-- custom css -->
+  <link rel="stylesheet" href="css/akun.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <title>Akun Saya</title>
+</head>
+<body>
+  <!-- nabar -->
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+      <a class="navbar-header" href="home.html"><img src="img/logoKuning.svg" alt="Logo.png">Familiy Pharmacy</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav navbar-right">
+          <!-- isi navbar -->
+        </div>
+      </div>
+    </div>
+  </nav>
+  <!-- akhir navbar -->
+
+  <!-- vektor -->
+  <div class="background">
+      <div class="vektor4">
+          <img src="img/Vector4.png" alt="">
+      </div>
+      <div class="vektor5 text-right">
+          <img src="img/Vector5.png" alt="">
+      </div>
+  </div>
+  <!-- akhir vektor -->
+  <!-- awal card -->
+  <div class="container body">
+    <div class="card text-center">
+      <div class="card-header">
+        <div class="row">
+          <div class="col-sm-3">
+            <div class="img">
+              <img src="https://kprofiles.com/wp-content/uploads/2019/12/WhatsApp-Image-2019-12-03-at-4.13.01-PM-799x800.jpeg" alt ="profile.jpg">
+            </div>
+          </div>
+          <div class="col-sm">
+            
+          </div>
+        </div>
+        <ul class="nav nav-tabs card-header-tabs justify-content-center">
+          <li class="nav-item">
+            <a class="nav-link active" id="profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="profile" aria-selected="true">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="akun-tab" data-toggle="tab" href="#nav-akun" role="tab" aria-controls="akun" aria-selected="false">Akun</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="jadwal-tab" data-toggle="tab" href="#nav-jadwal" role="tab" aria-controls="jadwal" aria-selected="false">Jadwal</a>
+          </li>
+        </ul>
+      </div>
+      <div class="card-body">
+        <!-- untuk message -->
+        <div id="message" style="text-align : center;">
+          <p></p>
+        </div>
+        <!-- end of message -->
+        <div class="tab-content" id="nav-tabContent">
+          <div class="tab-pane fade show active" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+            <form action="" id="updateProfileForm">
+              <div class="row">
+                <div class="col-3">
+                  <label for="userId">User Id</label>
+                </div>
+                <div class="col">
+                  <div class="form-group">
+                    <input type="number" id="userId" class="form-control" disabled>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-3">
+                  <label for="namaUser">Nama</label>
+                </div>
+                <div class="col">
+                  <div class="form-group">
+                    <input type="text" id="namaUser" class="form-control" required>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-3">
+                  <label for="umurUser">Umur</label>
+                </div>
+                <div class="col">
+                  <div class="form-group">
+                    <input type="number" id="umurUser" class="form-control" required>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-3">
+                  <label for="alamatUser">Alamat</label>
+                </div>
+                <div class="col">
+                  <div class="form-group">
+                    <input type="text" id="alamatUser" class="form-control" required>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-3">
+                  <label for="notelpUser">No Telpon</label>
+                </div>
+                <div class="col">
+                  <div class="form-group">
+                    <input type="text" id="notelpUser" class="form-control" required>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <div class="button">
+                    <button type="submit" class="customBtn successBtn" data-id="1">Update Profile</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+
+
+          <div class="tab-pane fade" id="nav-akun" role="tabpanel" aria-labelledby="nav-akun-tab">
+            <form action="" id="updateAccountForm">
+              <div class="row">
+                <div class="col-3">
+                  <label for="username">Username</label>
+                </div>
+                <div class="col">
+                  <div class="form-group">
+                    <input type="text" id="username" class="form-control" required>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-3">
+                  <label for="emailUser">Email</label>
+                </div>
+                <div class="col">
+                  <div class="form-group">
+                    <input type="email" id="emailUser" class="form-control" required>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-3"></div>
+                <div class="col">
+                  <div class="changePass" style="text-align: left;">
+                    <a href="" data-izimodal-open="#passwordModal" class="customBtn btn-light">Ubah Password</a>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <div class="button">
+                    <p style="display: inline; margin-right: 12px;">Update email dan username</p>
+                    <button type="submit" class="customBtn successBtn" data-id="1">Update Akun</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="tab-pane fade" id="nav-jadwal" role="tabpanel" aria-labelledby="nav-jadwal-tab">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam deserunt, nobis porro fugiat ullam ea cumque! Iusto ratione aliquid natus optio sunt? Reiciendis sit eum hic ipsum ipsam veritatis, facilis dolor laborum nihil eveniet voluptatem harum nam numquam, deleniti, ullam iste explicabo similique asperiores dicta expedita? Consequatur vitae maxime totam necessitatibus enim quasi, facilis et quisquam odio? Inventore labore in eaque illo tenetur consequatur, itaque quam et doloribus nam? Cumque sint quaerat aut, mollitia dolorem dolor, quam reiciendis repellat quos id vel quibusdam! Cupiditate, totam illum necessitatibus libero nostrum voluptatum repellat, quae optio tenetur similique adipisci non odit est aliquam doloremque dicta officia, reprehenderit sequi. Provident, cum sed. Consequuntur necessitatibus ut excepturi cumque aut repudiandae illum optio, a enim? Quae voluptates repellendus quidem laborum atque quod commodi itaque officiis sapiente vero. Quos expedita aut, quisquam inventore soluta nisi adipisci alias sed? Aut asperiores perspiciatis possimus porro nihil? Quod earum aspernatur doloribus error, amet autem dolorum nam odit reiciendis voluptatum repellat corporis! Recusandae sit, soluta suscipit eligendi sed voluptates omnis nam aperiam nulla. Quaerat exercitationem quibusdam cumque consequuntur? Itaque ab nesciunt temporibus dolore error molestiae voluptatum iure. Tempore sint vitae et rem eum ab laboriosam doloremque? Accusamus dignissimos ipsam eos dolores!
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- akhir card -->
+</body>
+</html>
+
+
+<div id="passwordModal">
+  <div class="content">
+    <form action="">
+      <div class="form-group">
+        <label for="password">Password Lama</label>
+        <input type="password" class="form-control" required id="password">
+      </div>
+      <div class="form-group">
+        <label for="newPassword">Password Baru</label>
+        <input type="password" class="form-control" required id="newPassword">
+      </div>
+      <div class="form-group">
+        <label for="rePassword">Confirm Password</label>
+        <input type="password" class="form-control" required id="rePassword">
+      </div>
+      <div class="form-group" style="text-align: right;">
+        <button type="submit" class="customBtn successBtn">Ubah</button>
+        <a href="" class="customBtn btn-danger" data-izimodal-close = "#passwordModal">Cancel</a>
+      </div>
+    </form>
+    <!-- untuk message -->
+    <div id="modalMessage" style="text-align : center;">
+      <p></p>
+    </div>
+    <!-- end of message -->
+  </div>
+</div>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+<!-- axios -->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<!-- izimodal -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/izimodal/1.5.1/js/iziModal.js"></script>
+
+
+<!-- custom js -->
+<script src="js/function.js"></script>
+<script src="js/akun.js"></script>
+
+
