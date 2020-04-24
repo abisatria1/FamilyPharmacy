@@ -2,10 +2,10 @@ const isiJadwalPegawai = async () => {
     try {
         const token = sessionStorage.getItem('token')
         var no = 0
-        arrPegawai = await searchNama(token)
+        arrPegawai = await searchUser(token)
         for (let index = 0; index < arrPegawai.length; index++) {
             const jadwal = await requestJadwalPegawai(arrPegawai[index].id, token)
-            $.each(jadwal.data.data, async (i, itemJ) => {
+            $.each(jadwal.data.data, function (i, itemJ) {
                 let string =
                     `
                     <tr id="row${itemJ.id}">
@@ -24,7 +24,6 @@ const isiJadwalPegawai = async () => {
                     `
                 no++
                 $('tbody').append(string)
-                console.log()
             })
         }
 
@@ -36,7 +35,7 @@ const isiJadwalPegawai = async () => {
     }
 }
 
-const searchNama = async (token) => {
+const searchUser = async (token) => {
     var result = []
     const resultPegawai = await requestDataPegawai(token)
     $.each(resultPegawai.data.data, function (i, item) {
