@@ -1,29 +1,32 @@
 const isiJadwalPegawai = async () => {
     try {
         const token = sessionStorage.getItem('token')
-        const resultPegawai = await requestDataPegawai(token)
-        $.each(resultPegawai.data.data, async (index, itemP) => {
-            jadwal = await requestJadwalPegawai(itemP.id, token)
-            $.each(jadwal.data.data, function(i, itemJ){
+        var no = 0
+        arrPegawai = await searchNama(token)
+        for (let index = 0; index < arrPegawai.length; index++) {
+            const jadwal = await requestJadwalPegawai(arrPegawai[index].id, token)
+            $.each(jadwal.data.data, async (i, itemJ) => {
                 let string =
-                `
-                <tr id="row${itemJ.id}">
-                <form action="">
-                    <td class="text-center">${index+1}</td>    
-                    <td class="text-left namaUser">${itemP.namaUser}</td>
-                    <td class="text-center hari">${itemJ.hari}</td>
-                    <td class="text-center jamMasuk">${itemJ.jamMasuk}</td>
-                    <td class="text-center jamKeluar">${itemJ.jamKeluar}</td>
-                    <td class="text-center">
-                        <a href="" data-id ="${itemJ.id}" data-izimodal-open="#modal" class="editBtn btn badge-warning float-center btn-sm">Edit</a>
-                        <a href="#" data-id ="${itemJ.id}" class="deleteBtn btn badge-danger float-center btn-sm">Hapus</a>
-                    </td>
-                </form>
-                </tr>
-                `
-            $('tbody').append(string)
+                    `
+                    <tr id="row${itemJ.id}">
+                    <form action="">
+                        <td class="text-center">${no+1}</td>    
+                        <td class="text-left namaUser">${arrPegawai[index].namaUser}</td>
+                        <td class="text-center hari">${itemJ.hari}</td>
+                        <td class="text-center jamMasuk">${itemJ.jamMasuk}</td>
+                        <td class="text-center jamKeluar">${itemJ.jamKeluar}</td>
+                        <td class="text-center">
+                            <a href="" data-id ="${itemJ.id}" data-izimodal-open="#modal" class="editBtn btn badge-warning float-center btn-sm">Edit</a>
+                            <a href="#" data-id ="${itemJ.id}" class="deleteBtn btn badge-danger float-center btn-sm">Hapus</a>
+                        </td>
+                    </form>
+                    </tr>
+                    `
+                no++
+                $('tbody').append(string)
+                console.log()
             })
-        })
+        }
 
 
     } catch (err) {
@@ -33,10 +36,19 @@ const isiJadwalPegawai = async () => {
     }
 }
 
+const searchNama = async (token) => {
+    var result = []
+    const resultPegawai = await requestDataPegawai(token)
+    $.each(resultPegawai.data.data, function (i, item) {
+        result.push(item)
+    })
+    return result
+}
+
 const namaPegawai = async (token) => {
     try {
         const resultPegawai = await requestDataPegawai(token)
-        $.each(resultPegawai.data.data, async (i, item) => {
+        $.each(resultPegawai.data.data, function (i, item) {
             let string =
                 `
                 <option value="${item.id}">${item.namaUser}</option>
@@ -63,7 +75,7 @@ const editData = id => {
         </div>
         <div class="form-group">
             <p>Hari</p>
-            <input type="number" class="form-control" placeholder="Hari" id="editHari" value="${hari}" required >
+            <input type="text" class="form-control" placeholder="Hari" id="editHari" value="${hari}" required >
         </div>
         <div class="form-group">
             <p>Jam Masuk</p>
@@ -153,6 +165,7 @@ const updateJadwal = async (id) => {
             }, 5000);
         });
     }
+    
 }
 
 
@@ -191,8 +204,9 @@ const requestJadwalPegawai = (id, token) => {
 }
 
 const requestUpdateJadwal = (token, id, data) => {
+    console.log(id)
     return axios({
-        url: `localhost:3001/schedules/${id}/4`,
+        url: `http://localhost:3001/schedules/${id}/4`,
         method: 'PATCH',
         headers: {
             'Authorization': token
@@ -250,6 +264,7 @@ $(document).ready(async function (e) {
 
     $('.editBtn').click(async function (e) {
         e.preventDefault();
+        console.log($(this).data('id'))
         await editData($(this).data('id'));
     })
 
@@ -260,6 +275,7 @@ $(document).ready(async function (e) {
 
     $('body').on('click', '.deleteBtn', async function (e) {
         e.preventDefault()
+        console.log($(this).data('id'))
         let validate = confirm('Apakah anda yakin menghapus data ini?')
         if (validate == true) {
             await hapusJadwal($(this).data('id'))
