@@ -17,14 +17,14 @@ const isiJadwalPegawai = async () => {
                     <td class="text-center jamKeluar">${itemJ.jamKeluar}</td>
                     <td class="text-center">
                         <a href="" data-id ="${itemJ.id}" data-izimodal-open="#modal" class="editBtn btn badge-warning float-center btn-sm">Edit</a>
-                        <a href="#" data-id ="${itemJ.id}" class="deleteBtn btn badge-danger float-center btn-sm">Hapus</a>
+                        <a href="#" data-userId="${itemJ.userId}" data-id ="${itemJ.id}" class="deleteBtn btn badge-danger float-center btn-sm">Hapus</a>
                     </td>
                 </form>
                 </tr>
                 `
                 no++
                 $('tbody').append(string)
-                console.log()
+                console.log(itemJ.id)
             })
         }
 
@@ -109,9 +109,9 @@ const editData = id => {
     });
 }
 
-const hapusJadwal = async (id) => {
+const hapusJadwal = async (id, idS) => {
     try {
-        const response = await requestDeleteJadwal(sessionStorage.getItem('token'), id)
+        const response = await requestDeleteJadwal(sessionStorage.getItem('token'), id, idS)
         flashMessage(response.data.message, true)
         window.location = 'jadwal_pegawai.html'
     } catch (err) {
@@ -213,9 +213,9 @@ const requestUpdateJadwal = (token, id, data) => {
     })
 }
 
-const requestDeleteJadwal = (token, id) => {
+const requestDeleteJadwal = (token, id, idS) => {
     return axios({
-        url: `http://localhost:3001/schedules/5/${id}`,
+        url: `http://localhost:3001/schedules/${idS}/${id}`,
         method: 'DELETE',
         headers: {
             'Authorization': token
@@ -236,14 +236,9 @@ $(document).ready(async function (e) {
     $(`a[href="jadwal_pegawai.html"]`).attr('id', 'active');
 
     $('#table').DataTable({
-        "lengthMenu": [
-            [5, 10, 30, 50, -1],
-            [5, 10, 30, 50, "All"]
-        ]
+        "lengthMenu" : [[5,10,30,50, -1], [5,10,30,50,"All"]]
     });
 
-    $('.dataTables_length').addClass('bs-select');
-    
     $('#tambahModal').iziModal({
         title: 'Tambah Jadwal Pegawai',
         subtitle: 'Diharapkan mengisi data dengan benar dan bertanggung jawab',
@@ -262,7 +257,7 @@ $(document).ready(async function (e) {
 
     $('.editBtn').click(async function (e) {
         e.preventDefault();
-        await editData($(this).data('id'));
+        await editData($(this).attr("data-id"));
     })
 
     $('body').on('submit', '#modal form', async function (e) {
@@ -274,7 +269,7 @@ $(document).ready(async function (e) {
         e.preventDefault()
         let validate = confirm('Apakah anda yakin menghapus data ini?')
         if (validate == true) {
-            await hapusJadwal($(this).data('id'))
+            await hapusJadwal($(this).attr("data-id"), $(this).attr("data-userId"))
         }
     })
 
