@@ -234,10 +234,14 @@ $(document).ready(async function (e) {
     cekMessage()
     $(`a[href="home.html"]`).attr('id', '');
     $(`a[href="jadwal_pegawai.html"]`).attr('id', 'active');
-
     $('#table').DataTable({
-        "lengthMenu" : [[5,10,30,50, -1], [5,10,30,50,"All"]]
+        "lengthMenu": [
+            [5, 10, 30, 50, -1],
+            [5, 10, 30, 50, "All"]
+        ]
     });
+
+    $('.dataTables_length').addClass('bs-select');
 
     $('#tambahModal').iziModal({
         title: 'Tambah Jadwal Pegawai',
@@ -255,9 +259,9 @@ $(document).ready(async function (e) {
         await insertJadwal()
     })
 
-    $('.editBtn').click(async function (e) {
-        e.preventDefault();
-        await editData($(this).attr("data-id"));
+    $('body').on('click' , '.editBtn', async function(e) {
+        e.preventDefault()
+        editData($(this).data('id'))
     })
 
     $('body').on('submit', '#modal form', async function (e) {
