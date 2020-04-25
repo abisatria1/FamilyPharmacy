@@ -1,16 +1,17 @@
 const isiJadwalPegawai = async () => {
     try {
         const token = sessionStorage.getItem('token')
-        const resultPegawai = await requestDataPegawai(token)
-        $.each(resultPegawai.data.data, async (index, itemP) => {
-            jadwal = await requestJadwalPegawai(itemP.id, token)
-            $.each(jadwal.data.data, function(i, itemJ){
+        var no = 0
+        arrPegawai = await searchUser(token)
+        for (let index = 0; index < arrPegawai.length; index++) {
+            const jadwal = await requestJadwalPegawai(arrPegawai[index].id, token)
+            $.each(jadwal.data.data, async (i, itemJ) => {
                 let string =
-                `
+                    `
                 <tr id="row${itemJ.id}">
                 <form action="">
-                    <td class="text-center">${index+1}</td>    
-                    <td class="text-left namaUser">${itemP.namaUser}</td>
+                    <td class="text-center">${no+1}</td>    
+                    <td class="text-left namaUser">${arrPegawai[index].namaUser}</td>
                     <td class="text-center hari">${itemJ.hari}</td>
                     <td class="text-center jamMasuk">${itemJ.jamMasuk}</td>
                     <td class="text-center jamKeluar">${itemJ.jamKeluar}</td>
@@ -21,9 +22,11 @@ const isiJadwalPegawai = async () => {
                 </form>
                 </tr>
                 `
-            $('tbody').append(string)
+                no++
+                $('tbody').append(string)
+                console.log()
             })
-        })
+        }
 
 
     } catch (err) {
@@ -31,6 +34,15 @@ const isiJadwalPegawai = async () => {
             return window.location = 'notAllowed.html';
         }
     }
+}
+
+const searchUser = async (token) => {
+    var result = []
+    const resultPegawai = await requestDataPegawai(token)
+    $.each(resultPegawai.data.data, function (i, item) {
+        result.push(item)
+    })
+    return result
 }
 
 const namaPegawai = async (token) => {
@@ -63,7 +75,7 @@ const editData = id => {
         </div>
         <div class="form-group">
             <p>Hari</p>
-            <input type="number" class="form-control" placeholder="Hari" id="editHari" value="${hari}" required >
+            <input type="text" class="form-control" placeholder="Hari" id="editHari" value="${hari}" required >
         </div>
         <div class="form-group">
             <p>Jam Masuk</p>
@@ -192,7 +204,7 @@ const requestJadwalPegawai = (id, token) => {
 
 const requestUpdateJadwal = (token, id, data) => {
     return axios({
-        url: `localhost:3001/schedules/${id}/4`,
+        url: `http://localhost:3001/schedules/5/${id}`,
         method: 'PATCH',
         headers: {
             'Authorization': token
@@ -203,7 +215,7 @@ const requestUpdateJadwal = (token, id, data) => {
 
 const requestDeleteJadwal = (token, id) => {
     return axios({
-        url: `http://localhost:3001/schedules/${id}/3`,
+        url: `http://localhost:3001/schedules/5/${id}`,
         method: 'DELETE',
         headers: {
             'Authorization': token
@@ -231,7 +243,7 @@ $(document).ready(async function (e) {
     });
 
     $('.dataTables_length').addClass('bs-select');
-
+    
     $('#tambahModal').iziModal({
         title: 'Tambah Jadwal Pegawai',
         subtitle: 'Diharapkan mengisi data dengan benar dan bertanggung jawab',
