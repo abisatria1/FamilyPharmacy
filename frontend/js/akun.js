@@ -8,6 +8,7 @@ $(document).ready(function() {
     })
     cekLogin()
     fillData()
+    fillSchedule()
     $('#message').hide()
     $('#modalMessage').hide()
     isiNavbar(getUserFromSession().statusUser)
@@ -122,6 +123,36 @@ const message = (element,message,status) => {
     });
 }
 
+const fillSchedule = async () => {
+    const schedule = await requestGetSchedule(sessionStorage.getItem('token'))
+    const item = schedule.data.data
+    if (item.length !== 0) {
+        item.map(data=> {
+            $('.schedules').append(
+                `
+                <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                <h5 class="card-title">${data.hari}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Jam Masuk : ${data.jamMasuk} - ${data.jamKeluar}</h6>
+                </div>
+                </div>
+                `
+            )
+        })
+        
+    }else {
+        $('.schedules').append(
+            `
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                <h5 class="card-title">Tidak ada jadwal</h5>
+                </div>
+            </div>
+            `
+        )
+    }
+}
+
 const requestUpdateProfile = (data,token) => {
     return axios({
         url : baseUrl + '/users/profile',
@@ -146,6 +177,14 @@ const requestUpdatePassword = (data,token) => {
         method : 'PATCH',
         headers : {'Authorization' : token},
         data : data
+    })
+}
+
+const requestGetSchedule = (token) => {
+    return axios({
+        url : baseUrl + '/schedules/getSchedule',
+        method : 'GET',
+        headers : {'Authorization' : token}
     })
 }
 
