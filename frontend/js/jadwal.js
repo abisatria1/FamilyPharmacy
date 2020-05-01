@@ -53,7 +53,7 @@ const namaPegawai = async (token) => {
                 `
                 <option value="${item.id}">${item.namaUser}</option>
                 `
-            $('select').append(string)
+            $('#listUser').append(string)
 
         })
 
@@ -79,11 +79,11 @@ const editData = id => {
         </div>
         <div class="form-group">
             <p>Jam Masuk</p>
-            <input type="time" class="form-control" placeholder="Jam Masuk" id="editJamMasuk" value="${jamMasuk}" required>
+            <input type="time" id="editJamMasuk" class="form-control clockpicker" value="${jamMasuk}" placeholder="Pilih Jam Masuk" required autocomplete="off">
         </div>
         <div class="form-group">
-            <p>No Telpon Pegawai</p>
-            <input type="time" class="form-control" placeholder="Jam Keluar" id="editJamKeluar" value="${jamKeluar}" required>
+            <p>Jam Keluar</p>
+            <input type="time" id="editJamKeluar" class="form-control clockpicker" value="${jamKeluar}" placeholder="Pilih Jam Keluar" required autocomplete="off">
         </div>
 
         <div class="errorMessage alert alert-danger">
@@ -105,6 +105,13 @@ const editData = id => {
         width: 700,
         onClosed: function () {
             $('#modal form').empty();
+        },
+        onOpening: function() {
+            $('.clockpicker').clockpicker({
+                placement: 'top',
+                align: 'right',
+                autoclose: true
+            });
         }
     });
 }
@@ -251,6 +258,13 @@ $(document).ready(async function (e) {
         width: 900,
         onClosed: function () {
             $('#tambahModal input').val('');
+        },
+        onOpening: function() {
+            $('.clockpicker').clockpicker({
+                placement: 'top',
+                align: 'right',
+                autoclose: true
+            });
         }
     });
 

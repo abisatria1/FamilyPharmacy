@@ -75,4 +75,8 @@ body{
 .tulisanObat {
   padding: 10px;
 }
+
+.popover {
+  z-index: 999;
+}
 /* end of modal */

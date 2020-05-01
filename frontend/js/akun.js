@@ -123,11 +123,74 @@ const message = (element,message,status) => {
     });
 }
 
+const sortHari = (jadwal) => {
+    let arr = jadwal.map(item => {
+        switch (item.hari) {
+            case 'Senin':
+                obj = {
+                    data : item,
+                    key : 0
+                }
+                break
+            case 'Selasa':
+                obj = {
+                    data : item,
+                    key : 1
+                }
+                break
+            case 'Rabu':
+                obj = {
+                    data : item,
+                    key : 2
+                }
+                break
+            case 'Kamis':
+                obj = {
+                    data : item,
+                    key : 3
+                }
+                break
+            case 'Jumat':
+                obj = {
+                    data : item,
+                    key : 4
+                }
+                break
+            case 'Sabtu':
+                obj = {
+                    data : item,
+                    key : 5
+                }
+                break
+            case 'Minggu':
+                obj = {
+                    data : item,
+                    key : 6
+                }
+                break
+            default:
+                break
+        }
+        return obj
+    })
+    arr.sort((x,y) => {
+        if (x.key < y.key) {
+            return -1;
+        }
+        if (x.key > y.key) {
+            return 1;
+        }
+        return 0;
+    })
+    return arr
+}
+
 const fillSchedule = async () => {
     const schedule = await requestGetSchedule(sessionStorage.getItem('token'))
-    const item = schedule.data.data
+    let item = schedule.data.data
+    item = sortHari(item)
     if (item.length !== 0) {
-        item.map(data=> {
+        item.map(({data}) => {
             $('.schedules').append(
                 `
                 <div class="card" style="width: 18rem;">
