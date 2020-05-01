@@ -41,7 +41,7 @@ const deleteDrug = async(req,res,next) => {
     if (!deleteDrug) response(res,'fail',null,'Drug not found',400)
     const filePath = deleteDrug.fotoObat
     const arrPath = filePath.split('/')
-    fs.unlink(arrPath[1] , err => {
+    fs.unlink(arrPath[3] , err => {
         if (err) return response(res,'fail',null,'Error delete image on local storage',500)
     })
     await deleteDrug.destroy()    
